@@ -36,7 +36,7 @@
     "capacitor-firebase-auth": "^0.3.1",
     "core-js": "^2.6.11",
     "dayjs": "^1.8.26",
-    "firebase": "^8.0.1",
+    "firebase": "^7.24.0",
     "google-libphonenumber": "^3.2.9",
     "jetifier": "^1.6.5",
     "npm": "^7.0.9",
