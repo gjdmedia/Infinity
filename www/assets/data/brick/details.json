@@ -1,0 +1,88 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "slug": "Wall",
+      "icon": "./assets/images/025-toolbox.png",
+      "showcaseImage": "./assets/images/wall.jpg",
+      "name": "Wall",
+      
+      "style": "Calculate the area of a wall that measures: Give your answer in m2"
+    },
+    {
+      "id": 2,
+      "slug": "Bricks",
+      "icon": "./assets/images/025-toolbox.png",
+      "showcaseImage": "./assets/images/bricks.jpg",
+      "name": "Bricks",
+      
+      "style": "Calculate how many bricks you would need for a half brick wide single skin wall"
+    },
+    {
+      "id": 3,
+      "slug": "Cost",
+      "icon": "./assets/images/025-toolbox.png",
+      "showcaseImage": "./assets/images/cost.jpg",
+      "name": "Cost",
+      
+      "style": "Calculate the cost of the following order of bricks"
+    },
+    {
+      "id": 4,
+      "slug": "Gable",
+      "icon": "./assets/images/025-toolbox.png",
+      "showcaseImage": "./assets/images/gable.jpg",
+      "name": "Gable",
+      "style": "Calculate the area of this gable end wall, give your anser in m2"
+    },
+    {
+      "id": 5,
+      "slug": "Insulation",
+      "icon": "./assets/images/025-toolbox.png",
+      "showcaseImage": "./assets/images/insualtion.jpg",
+      "name": "Insulation",
+      "style": "Calculate the total amount of insulation boards needed for the following room, Calculate the total amount of insulation boards needed for the following room  "
+    }
+    ,
+    {
+      "id": 6,
+      "slug": "Tiles",
+      "icon": "./assets/images/025-toolbox.png",
+      "showcaseImage": "./assets/images/tiles.jpg",
+      "name": "Tiles",
+      "style": "You are tiling a wall, how much will the tiles cost?"
+    } ,
+    {
+      "id": 7,
+      "slug": "Cement",
+      "icon": "./assets/images/025-toolbox.png",
+      "showcaseImage": "./assets/images/cement.jpg",
+      "name": "Cement",
+      "style": "In a ratio of 5:1 sand to cement how much of each material would I need?"
+    } ,
+    {
+      "id": 8,
+      "slug": "Raft",
+      "icon": "./assets/images/025-toolbox.png",
+      "showcaseImage": "./assets/images/raft.jpg",
+      "name": "Raft",
+      "style": "How much concrete it needed for a raft that measures:"
+    } ,
+    {
+      "id": 9,
+      "slug": "Discount",
+      "icon": "./assets/images/025-toolbox.png",
+      "showcaseImage": "./assets/images/discount.jpg",
+      "name": "Discount",
+      "style": "Which supplier will you use for ordering these materials: "
+    } ,
+    {
+      "id": 9,
+      "slug": "Build",
+      "icon": "./assets/images/025-toolbox.png",
+      "showcaseImage": "./assets/images/build.jpg",
+      "name": "Build",
+      "style": "How long will it take, and how much will you earn to build a single skin wall given the following: "
+    } 
+  ]
+}

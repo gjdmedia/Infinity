@@ -1,0 +1,60 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "slug": "Electrons",
+      "icon": "./assets/images/028-pliers.png",
+      "image": "./assets/images/electrons.jpg",
+      "name": "Electrons"
+    },    
+    {
+      "id": 2,
+      "slug": "Resistance",
+      "icon": "./assets/images/028-pliers.png",
+      "image": "./assets/images/resistance.jpg",
+      "name": "Resistance"
+    },
+    {
+      "id": 3,
+      "slug": "Ohms",
+      "icon": "./assets/images/028-pliers.png",
+      "image": "./assets/images/ohms.jpg",
+      "name": "Ohms"
+    },
+    {
+      "id": 4,
+      "slug": "Series",
+      "icon": "./assets/images/028-pliers.png",
+      "image": "./assets/images/series2.jpg",
+      "name": "Series"
+    },
+    {
+      "id": 5,
+      "slug": "Parallel",
+      "icon": "./assets/images/028-pliers.png",
+      "image": "./assets/images/parallel.jpg",
+      "name": "Parallel"
+    },
+    {
+      "id": 6,
+      "slug": "Force",
+      "icon": "./assets/images/028-pliers.png",
+      "image": "./assets/images/force.jpg",
+      "name": "Force"
+    },
+    {
+      "id": 7,
+      "slug": "EMF",
+      "icon": "./assets/images/028-pliers.png",
+      "image": "./assets/images/emf.jpg",
+      "name": "EMF"
+    },
+    {
+      "id": 8,
+      "slug": "Static",
+      "icon": "./assets/images/028-pliers.png",
+      "image": "./assets/images/static.jpg",
+      "name": "Static"
+    }
+  ]
+}

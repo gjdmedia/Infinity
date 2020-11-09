@@ -1,0 +1,46 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "slug": "Area",
+       "icon": "./assets/images/032-wood plane.png",
+      "image": "./assets/images/area.jpg",
+      "name": "Area"
+    },    
+    {
+      "id": 2,
+      "slug": "Perimiter",
+       "icon": "./assets/images/032-wood plane.png",
+      "image": "./assets/images/place.jpg",
+      "name": "Perimiter"
+    },
+    {
+      "id": 3,
+      "slug": "Carpenters",
+       "icon": "./assets/images/032-wood plane.png",
+      "image": "./assets/images/carpenters.jpg",
+      "name": "Carpenters"
+    },
+    {
+      "id": 4,
+      "slug": "Windows",
+       "icon": "./assets/images/032-wood plane.png",
+      "image": "./assets/images/windows.jpg",
+      "name": "Windows"
+    },
+    {
+      "id": 5,
+      "slug": "Doors",
+       "icon": "./assets/images/032-wood plane.png",
+      "image": "./assets/images/doors.jpg",
+      "name": "Doors"
+    },
+    {
+      "id": 6,
+      "slug": "Travel Time",
+       "icon": "./assets/images/032-wood plane.png",
+      "image": "./assets/images/travel.jpg",
+      "name": "Travel Time"
+    }
+  ]
+}

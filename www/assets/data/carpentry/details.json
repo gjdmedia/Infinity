@@ -1,0 +1,86 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "slug": "Skirting",
+      "icon": "./assets/images/010-saw.png",
+      "showcaseImage": "./assets/images/skirting.jpg",
+      "name": "Skirting",
+      "shortName": "La Olla",
+      "style": "Calculate the amount of skirting board needed for a room that measures:",
+      "priceRange": 3,
+      "avgRating": 4.2
+    },
+    {
+      "id": 2,
+      "slug": "Laminate",
+      "icon": "./assets/images/010-saw.png",
+      "showcaseImage": "./assets/images/laminate.jpg",
+      "name": "Laminate",
+      "shortName": "La Olla",
+      "style": "Calculate the amount of laminate flooring needed for a room that measures:",
+      "priceRange": 3,
+      "avgRating": 4.2
+    },
+    {
+      "id": 3,
+      "slug": "Spindles",
+      "icon": "./assets/images/010-saw.png",
+      "showcaseImage": "./assets/images/spindles.jpg",
+      "name": "Spindles",
+      "shortName": "La Olla",
+      "style": "Calculate the number of spindles required, and the space between each spindle, for a staircase",
+      "priceRange": 3,
+      "avgRating": 4.2
+    },
+    {
+      "id": 4,
+      "slug": "Paint",
+      "icon": "./assets/images/010-saw.png",
+      "showcaseImage": "./assets/images/paint.jpg",
+      "name": "Paint",
+      "style": "You have to paint a timber wall. A 5 litre tin will cover 22 square metres, how many tins are required to cover the following area?"
+    },
+    {
+      "id": 5,
+      "slug": "Timber",
+      "icon": "./assets/images/010-saw.png",
+      "showcaseImage": "./assets/images/timber.jpg",
+      "name": "Timber",
+      "style": "You have ordered some timber to be delivered, work out the total cost including VAT"
+    }
+    ,
+    {
+      "id": 6,
+      "slug": "Plasterboard",
+      "icon": "./assets/images/010-saw.png",
+      "showcaseImage": "./assets/images/plasterboard.jpg",
+      "name": "Plasterboard",
+      "style": "You have ordered some timber to be delivered, work out the total cost including VAT"
+    } ,
+    {
+      "id": 7,
+      "slug": "Discount",
+      "icon": "./assets/images/010-saw.png",
+      "showcaseImage": "./assets/images/discount.jpg",
+      "name": "Discount",
+      "style": "You have ordered some timber to be delivered, work out the total cost including VAT"
+    } ,
+    {
+      "id": 8,
+      "slug": "Joist",
+      "icon": "./assets/images/010-saw.png",
+      "showcaseImage": "./assets/images/joist.jpg",
+      "name": "Joist",
+      "style": "You are repairing part of a timber joist which is rotten."
+    } ,
+    {
+      "id": 9,
+      "slug": "Circumference",
+      "icon": "./assets/images/010-saw.png",
+      "showcaseImage": "./assets/images/circumference.jpg",
+      "name": "Circumference",
+      "style": "What’s the circumference of a saw blade with a radius of: "
+    } 
+  ]
+}

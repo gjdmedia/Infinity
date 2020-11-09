@@ -1,0 +1,77 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "slug": "Convert",
+      "icon": "./assets/images/012-wrench.png",
+      "showcaseImage": "./assets/images/place.jpg",
+      "name": "Convert",
+      "style": "Convert the following to millimetres:"
+    },
+    {
+      "id": 2,
+      "slug": "Area",
+      "icon": "./assets/images/012-wrench.png",
+      "showcaseImage": "./assets/images/area.jpg",
+      "name": "Area",
+      "style": "Calculate the area of the rooms in square metres:"
+    },
+    {
+      "id": 3,
+      "slug": "Room Volume",
+      "icon": "./assets/images/012-wrench.png",
+      "showcaseImage": "./assets/images/wall_area.png",
+      "name": "Room Volume",
+      "style": "Calculate the total volume of this room in m3:"
+    },
+    {
+      "id": 4,
+      "slug": "Litres",
+      "icon": "./assets/images/012-wrench.png",
+      "showcaseImage": "./assets/images/litres.jpg",
+      "name": "Litres",
+      "style": "Convert the flow rate from:"
+    },
+    {
+      "id": 5,
+      "slug": "Joist",
+      "icon": "./assets/images/012-wrench.png",
+      "showcaseImage": "./assets/images/joist.jpg",
+      "name": "Joist",
+      "style": "What is the maximum diameter pipe that could be installed in this joist:"
+    }
+    ,
+    {
+      "id": 6,
+      "slug": "Cylinder",
+      "icon": "./assets/images/012-wrench.png",
+      "showcaseImage": "./assets/images/cylinder.jpg",
+      "name": "Cylinder",
+      "style": "Calculate the total volume of this water cylinder in litres and m3:"
+    } ,
+    {
+      "id": 7,
+      "slug": "Water Pressure",
+      "icon": "./assets/images/012-wrench.png",
+      "showcaseImage": "./assets/images/waterpressure.jpg",
+      "name": "Water Pressure",
+      "style": "What pressure will be released from the tap given:"
+    } ,
+    {
+      "id": 8,
+      "slug": "Gutter",
+      "icon": "./assets/images/012-wrench.png",
+      "showcaseImage": "./assets/images/gutter.jpg",
+      "name": "Gutter",
+      "style": "How much would the following piece of guttering expand by given the increase in temperature?"
+    } ,
+    {
+      "id": 9,
+      "slug": "Heat Cap",
+      "icon": "./assets/images/012-wrench.png",
+      "showcaseImage": "./assets/images/hotwater.jpg",
+      "name": "Heat Cap",
+      "style": "How much energy will it take to heat: "
+    }
+  ]
+}
