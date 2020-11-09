@@ -1,0 +1,74 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "slug": "Wall",
+      "icon": "./assets/images/025-toolbox.png",
+      "image": "./assets/images/wall.jpg",
+      "name": "Wall"
+    },    
+    {
+      "id": 2,
+      "slug": "Bricks",
+      "icon": "./assets/images/025-toolbox.png",
+      "image": "./assets/images/bricks.jpg",
+      "name": "Bricks"
+    },
+    {
+      "id": 3,
+      "slug": "Cost",
+      "icon": "./assets/images/025-toolbox.png",
+      "image": "./assets/images/cost.jpg",
+      "name": "Cost"
+    },
+    {
+      "id": 4,
+      "slug": "Gable",
+      "icon": "./assets/images/025-toolbox.png",
+      "image": "./assets/images/gable.jpg",
+      "name": "Gable"
+    },
+    {
+      "id": 5,
+      "slug": "Insulation",
+      "icon": "./assets/images/025-toolbox.png",
+      "image": "./assets/images/insulation.jpg",
+      "name": "Insulation"
+    },
+    {
+      "id": 6,
+      "slug": "Tiles",
+      "icon": "./assets/images/025-toolbox.png",
+      "image": "./assets/images/tiles.jpg",
+      "name": "Tiles"
+    },
+    {
+      "id": 7,
+      "slug": "Cement",
+      "icon": "./assets/images/025-toolbox.png",
+      "image": "./assets/images/cement.jpg",
+      "name": "Cement"
+    },
+    {
+      "id": 8,
+      "slug": "Raft",
+      "icon": "./assets/images/025-toolbox.png",
+      "image": "./assets/images/raft.jpg",
+      "name": "Raft"
+    },
+    {
+      "id": 9,
+      "slug": "Discount",
+      "icon": "./assets/images/025-toolbox.png",
+      "image": "./assets/images/discount.jpg",
+      "name": "Discount"
+    },
+    {
+      "id": 9,
+      "slug": "Build",
+      "icon": "./assets/images/025-toolbox.png",
+      "image": "./assets/images/build.jpg",
+      "name": "Build"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "slug": "Skirting",
+      "icon": "./assets/images/010-saw.png",
+      "image": "./assets/images/skirting.jpg",
+      "name": "Skirting"
+    },    
+    {
+      "id": 2,
+      "slug": "Laminate",
+      "icon": "./assets/images/010-saw.png",
+      "image": "./assets/images/laminate.jpg",
+      "name": "Laminate"
+    },
+    {
+      "id": 3,
+      "slug": "Spindles",
+      "icon": "./assets/images/010-saw.png",
+      "image": "./assets/images/spindles.jpg",
+      "name": "Spindles"
+    },
+    {
+      "id": 4,
+      "slug": "Paint",
+      "icon": "./assets/images/010-saw.png",
+      "image": "./assets/images/paint.jpg",
+      "name": "Paint"
+    },
+    {
+      "id": 5,
+      "slug": "Timber",
+      "icon": "./assets/images/010-saw.png",
+      "image": "./assets/images/timber.jpg",
+      "name": "Timber"
+    },
+    {
+      "id": 6,
+      "slug": "Plasterboard",
+      "icon": "./assets/images/010-saw.png",
+      "image": "./assets/images/plasterboard.jpg",
+      "name": "Plasterboard"
+    },
+    {
+      "id": 7,
+      "slug": "Discount",
+      "icon": "./assets/images/010-saw.png",
+      "image": "./assets/images/discount.jpg",
+      "name": "Discount"
+    },
+    {
+      "id": 8,
+      "slug": "Joist",
+      "icon": "./assets/images/010-saw.png",
+      "image": "./assets/images/joist.jpg",
+      "name": "Joist"
+    },
+    {
+      "id": 9,
+      "slug": "Circumference",
+      "icon": "./assets/images/010-saw.png",
+      "image": "./assets/images/circumference.jpg",
+      "name": "Circumference"
+    }
+  ]
+}

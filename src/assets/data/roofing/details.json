@@ -1,0 +1,89 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "slug": "Labour",
+      "icon": "./assets/images/015-ladder.png",
+      "showcaseImage": "./assets/images/labour.jpg",
+      "name": "Labour",
+      
+      "style": "How much should you be paid for the following job?"
+    },
+    {
+      "id": 2,
+      "slug": "Discount",
+      "icon": "./assets/images/015-ladder.png",
+      "showcaseImage": "./assets/images/discount.jpg",
+      "name": "Discount",
+      
+      "style": "How much would the following order cost with the discount applied?"
+    },
+    {
+      "id": 3,
+      "slug": "Breakages",
+      "icon": "./assets/images/015-ladder.png",
+      "showcaseImage": "./assets/images/breakages.jpg",
+      "name": "Breakages",
+      
+      "style": "Calculate how many extra tiles you would need to order for this job"
+    },
+    {
+      "id": 4,
+      "slug": "Pallet",
+      "icon": "./assets/images/015-ladder.png",
+      "showcaseImage": "./assets/images/pallet.jpg",
+      "name": "Pallet",
+      "style": "How many pallets would you need to order to get this many tiles?"
+    },
+    {
+      "id": 5,
+      "slug": "Cost",
+      "icon": "./assets/images/015-ladder.png",
+      "showcaseImage": "./assets/images/cost.jpg",
+      "name": "Cost",
+      "style": "How much would this amount of tiles cost with VAT and delivery added?"
+    }
+    ,
+    {
+      "id": 6,
+      "slug": "Cement",
+      "icon": "./assets/images/015-ladder.png",
+      "showcaseImage": "./assets/images/cement.jpg",
+      "name": "Cement",
+      "style": "How much of each material do you need to make the following quantity of cement?"
+    }
+    ,
+    {
+      "id": 7,
+      "slug": "Gable",
+      "icon": "./assets/images/015-ladder.png",
+      "showcaseImage": "./assets/images/gable.jpg",
+      "name": "Gable",
+      "style": "Calculate the total area of this gable roof, put your answer in m2"
+    } ,
+    {
+      "id": 8,
+      "slug": "Tiles",
+      "icon": "./assets/images/015-ladder.png",
+      "showcaseImage": "./assets/images/tiles.jpg",
+      "name": "Tiles",
+      "style": "Calculate how many tiles you will need to order for this roof"
+    } ,
+    {
+      "id": 9,
+      "slug": "Gutter",
+      "icon": "./assets/images/015-ladder.png",
+      "showcaseImage": "./assets/images/gutter.jpg",
+      "name": "Gutter",
+      "style": "How much guttering would you need for this hip-roofed building?"
+    } ,
+    {
+      "id": 10,
+      "slug": "Job Price",
+      "icon": "./assets/images/015-ladder.png",
+      "showcaseImage": "./assets/images/price.jpg",
+      "name": "Job Price",
+      "style": "Can you quote a price for replacing the tiles on this roof?"
+    } 
+  ]
+}

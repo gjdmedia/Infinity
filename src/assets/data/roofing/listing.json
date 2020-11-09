@@ -1,0 +1,67 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "slug": "Labour",
+      "icon": "./assets/images/015-ladder.png",
+      "image": "./assets/images/labour.jpg",
+      "name": "Labour"
+    },    
+    {
+      "id": 2,
+      "slug": "Discount",
+      "icon": "./assets/images/015-ladder.png",
+      "image": "./assets/images/discount.jpg",
+      "name": "Discount"
+    },
+    {
+      "id": 3,
+      "slug": "Breakages",
+      "icon": "./assets/images/015-ladder.png",
+      "image": "./assets/images/breakages.jpg",
+      "name": "Breakages"
+    },
+    {
+      "id": 4,
+      "slug": "Pallet",
+      "icon": "./assets/images/015-ladder.png",
+      "image": "./assets/images/pallet.jpg",
+      "name": "Pallet"
+    },
+    {
+      "id": 5,
+      "slug": "Cost",
+      "icon": "./assets/images/015-ladder.png",
+      "image": "./assets/images/cost.jpg",
+      "name": "Cost"
+    },
+    {
+      "id": 6,
+      "slug": "Cement",
+      "icon": "./assets/images/015-ladder.png",
+      "image": "./assets/images/cement.jpg",
+      "name": "Cement"
+    },
+    {
+      "id": 7,
+      "slug": "Gable",
+      "icon": "./assets/images/015-ladder.png",
+      "image": "./assets/images/gable.jpg",
+      "name": "Gable"
+    },
+    {
+      "id": 8,
+      "slug": "Tiles",
+      "icon": "./assets/images/015-ladder.png",
+      "image": "./assets/images/tiles.jpg",
+      "name": "Tiles"
+    },
+    {
+      "id": 9,
+      "slug": "Gutter",
+      "icon": "./assets/images/015-ladder.png",
+      "image": "./assets/images/gutter.jpg",
+      "name": "Gutter"
+    }
+  ] 
+}

@@ -1,0 +1,67 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "slug": "VAT",
+      "icon": "./assets/images/017-brush.png",
+      "image": "./assets/images/vat.jpg",
+      "name": "VAT"
+    },    
+    {
+      "id": 2,
+      "slug": "Discount",
+      "icon": "./assets/images/017-brush.png",
+      "image": "./assets/images/discount.jpg",
+      "name": "Discount"
+    },
+    {
+      "id": 3,
+      "slug": "Labour",
+      "icon": "./assets/images/017-brush.png",
+      "image": "./assets/images/labour.jpg",
+      "name": "Labour"
+    },
+    {
+      "id": 4,
+      "slug": "Triangle",
+      "icon": "./assets/images/017-brush.png",
+      "image": "./assets/images/triangle.jpg",
+      "name": "Triangle"
+    },
+    {
+      "id": 5,
+      "slug": "Area",
+      "icon": "./assets/images/017-brush.png",
+      "image": "./assets/images/area.jpg",
+      "name": "Area"
+    },
+    {
+      "id": 6,
+      "slug": "Wall Area",
+      "icon": "./assets/images/017-brush.png",
+      "image": "./assets/images/wallarea.jpg",
+      "name": "Wall Area"
+    },
+    {
+      "id": 7,
+      "slug": "Paint",
+      "icon": "./assets/images/017-brush.png",
+      "image": "./assets/images/paint2.jpg",
+      "name": "Paint"
+    },
+    {
+      "id": 8,
+      "slug": "House Paint",
+      "icon": "./assets/images/017-brush.png",
+      "image": "./assets/images/housepaint.jpg",
+      "name": "House Paint"
+    },
+    {
+      "id": 9,
+      "slug": "Wallpaper",
+      "icon": "./assets/images/017-brush.png",
+      "image": "./assets/images/wallpaper.jpg",
+      "name": "Wallpaper"
+    }
+  ]
+}

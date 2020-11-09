@@ -1,0 +1,85 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "slug": "VAT",
+      "icon": "./assets/images/017-brush.png",
+      "showcaseImage": "./assets/images/vat.jpg",
+      "name": "VAT",
+      "style": "Calculate the total cost of all of these materials, with VAT added on:"
+    },
+    {
+      "id": 2,
+      "slug": "Discount",
+      "icon": "./assets/images/017-brush.png",
+      "showcaseImage": "./assets/images/discount.jpg",
+      "name": "Discount",
+      "style": "Calculate the total cost of all of these materials, with discount deducted:"
+    },
+    {
+      "id": 3,
+      "slug": "Labour",
+      "icon": "./assets/images/017-brush.png",
+      "showcaseImage": "./assets/images/labour.jpg",
+      "name": "Labour",
+      "style": "Calculate how much you would charge for your labour for this job:"
+    },
+    {
+      "id": 4,
+      "slug": "Triangle",
+      "icon": "./assets/images/017-brush.png",
+      "showcaseImage": "./assets/images/triangle.jpg",
+      "name": "Triangle",
+      "style": "Calculate the area of this area under some stairs"
+    },
+    {
+      "id": 5,
+      "slug": "Area",
+      "icon": "./assets/images/017-brush.png",
+      "showcaseImage": "./assets/images/area.jpg",
+      "name": "Area",
+      "style": "Calculate the area of a wall that measures:"
+    }
+    ,
+    {
+      "id": 6,
+      "slug": "Wall Area",
+      "icon": "./assets/images/017-brush.png",
+      "showcaseImage": "./assets/images/wallarea.jpg",
+      "name": "Wall Area",
+      "style": "Calculate the total wall area of a room that measures:"
+    } ,
+    {
+      "id": 7,
+      "slug": "Paint",
+      "icon": "./assets/images/017-brush.png",
+      "showcaseImage": "./assets/images/paint.jpg",
+      "name": "Paint",
+      "style": "Calculate how many tins of paint you would need to buy to paint the following:"
+    } ,
+    {
+      "id": 8,
+      "slug": "House Paint",
+      "icon": "./assets/images/017-brush.png",
+      "showcaseImage": "./assets/images/housepaint.jpg",
+      "name": "House Paint",
+      "style": "Calculate how much these materials would cost to buy with VAT added on:"
+    } ,
+    {
+      "id": 9,
+      "slug": "Wallpaper",
+      "icon": "./assets/images/017-brush.png",
+      "showcaseImage": "./assets/images/wallpaper.jpg",
+      "name": "Wallpaper",
+      "style": "Calculate how many rolls of wall paper, and the cost of the rolls of paper: "
+    } ,
+    {
+      "id": 10,
+      "slug": "Paint Job",
+      "icon": "./assets/images/017-brush.png",
+      "showcaseImage": "./assets/images/paint3.jpg",
+      "name": "Paint Job",
+      "style": "What’s the circumference of a saw blade with a radius of: "
+    } 
+  ]
+}

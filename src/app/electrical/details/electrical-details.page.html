@@ -1,0 +1,593 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="app/categories/electrical"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <app-text-shell [data]="details?.name"></app-text-shell>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="electrical-details-content">
+  <ion-row class="image-row">
+    <ion-col size="12">
+      <app-image-shell [display]="'cover'" animation="spinner" class="add-overlay showcase-image"
+        [src]="details?.showcaseImage">
+        <app-aspect-ratio [ratio]="{ w: 64, h: 40 }">
+          <div class="icon-wrapper">
+            <app-aspect-ratio [ratio]="{ w: 1, h: 1 }">
+              <app-image-shell class="icon-image" [src]="details?.icon"></app-image-shell>
+            </app-aspect-ratio>
+          </div>
+        </app-aspect-ratio>
+      </app-image-shell>
+    </ion-col>
+  </ion-row>
+  <!-- <ion-row class="description-row">
+    <ion-col size="9">
+      <h3 class="details-name">
+        <app-text-shell [data]="details?.name"></app-text-shell>
+      </h3>
+      <p class="details-style">
+        <app-text-shell [data]="details?.style"></app-text-shell>
+      </p>
+    </ion-col>
+  </ion-row> -->
+
+
+
+  <ion-slides class="walkthrough-slides" pager="true" [options]="slidesOptions">
+
+    <!-- Electrons Calculations -->
+
+    <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Electrons'">
+      <ion-row class="slide-inner-row">
+        <ion-card>
+          <img src="/assets/images/electrons.png" />
+          <ion-card-header>
+            <ion-card-title>
+              <app-text-shell [data]="details?.name"></app-text-shell>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <app-text-shell [data]="details?.style"></app-text-shell>
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-slide class="first-slide illustration-and-decoration-slide">
+              <ion-row class="slide-inner-row">
+                <!-- <h4 class="ion-padding">Intro</h4> -->
+                <!--  <ion-row class="description-row">
+              <img
+                src="/assets/images/simple_rectangle.png"
+                class="ion-padding"
+              />
+            </ion-row> -->
+                <form>
+                  <ion-list class="ion-padding">
+                    <ion-item class="ion-padding">
+                      <ion-label>Q |(Charge) :</ion-label>
+                      <p [innerHTML]="qCharge" type="number"></p>
+                      <p style="margin-left: 5px;">Coulombs</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>T (Time) :</ion-label>
+                      <p [innerHTML]="tTime" type="number"></p>
+                      <p style="margin-left: 5px;">Seconds</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>I (Current) :</ion-label>
+                      <ion-input clear-input name="iCurrent" [(ngModel)]="iCurrent"></ion-input>
+                      <p style="margin-left: 5px;">Amps</p>
+                    </ion-item>
+                  </ion-list>
+                  <div class="ion-padding">
+                    <ion-button color="secondary" expand="block" type="submit" (click)="calculateElectrons()">
+                      Submit
+                    </ion-button>
+                  </div>
+                </form>
+              </ion-row>
+            </ion-slide>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </ion-slide>
+
+    <!-- Resistance Calculations -->
+
+    <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Resistance'">
+      <ion-row class="slide-inner-row">
+        <ion-card>
+          <img src="/assets/images/resistivity.png" />
+          <ion-card-header>
+            <ion-card-title>
+              <app-text-shell [data]="details?.name"></app-text-shell>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <app-text-shell [data]="details?.style"></app-text-shell>
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-slide class="first-slide illustration-and-decoration-slide">
+              <ion-row class="slide-inner-row">
+                <!-- <h4 class="ion-padding">Intro</h4> -->
+                <!--  <ion-row class="description-row">
+              <img
+                src="/assets/images/simple_rectangle.png"
+                class="ion-padding"
+              />
+            </ion-row> -->
+                <form>
+                  <ion-list class="ion-padding">
+                    <ion-item class="ion-padding">
+                      <ion-label>p :</ion-label>
+                      <p [innerHTML]="pResist" type="number"></p>
+                      <p style="margin-left: 5px;">µΩm</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>L :</ion-label>
+                      <p [innerHTML]="lLength" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>A :</ion-label>
+                      <p [innerHTML]="csArea" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>R :</ion-label>
+                      <ion-input clear-input name="rValue" [(ngModel)]="rValue"></ion-input>
+                      <p style="margin-left: 5px;">m2</p>
+                    </ion-item>
+                  </ion-list>
+                  <div class="ion-padding">
+                    <ion-button color="secondary" expand="block" type="submit" (click)="calculateResistance()">
+                      Submit
+                    </ion-button>
+                  </div>
+                </form>
+              </ion-row>
+            </ion-slide>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </ion-slide>
+
+    <!-- Ohms Calculations -->
+
+    <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Ohms'">
+      <ion-row class="slide-inner-row">
+        <ion-card>
+          <!-- <img src="/assets/images/resistivity.png" /> -->
+          <ion-card-header>
+            <ion-card-title>
+              <app-text-shell [data]="details?.name"></app-text-shell>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <app-text-shell [data]="details?.style"></app-text-shell>
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-slide class="first-slide illustration-and-decoration-slide">
+              <ion-row class="slide-inner-row">
+                <!-- <h4 class="ion-padding">Intro</h4> -->
+                <!--  <ion-row class="description-row">
+              <img
+                src="/assets/images/simple_rectangle.png"
+                class="ion-padding"
+              />
+            </ion-row> -->
+                <form>
+                  <ion-list class="ion-padding">
+                    <ion-item class="ion-padding">
+                      <ion-label>V :</ion-label>
+                      <p [innerHTML]="vVolts" type="number"></p>
+                      <p style="margin-left: 5px;">v</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>I :</ion-label>
+                      <p [innerHTML]="iCur" type="number"></p>
+                      <p style="margin-left: 5px;">A</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>R :</ion-label>
+                      <ion-input clear-input name="resistR" [(ngModel)]="resistR"></ion-input>
+                      <p style="margin-left: 5px;">Ω</p>
+                    </ion-item>
+                  </ion-list>
+                  <div class="ion-padding">
+                    <ion-button color="secondary" expand="block" type="submit" (click)="calculateOhms()">
+                      Submit
+                    </ion-button>
+                  </div>
+                </form>
+              </ion-row>
+            </ion-slide>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </ion-slide>
+
+    <!-- Ohms Calculations -->
+
+    <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Ohms'">
+      <ion-row class="slide-inner-row">
+        <ion-card>
+          <!-- <img src="/assets/images/resistivity.png" /> -->
+          <ion-card-header>
+            <ion-card-title>
+              <app-text-shell [data]="details?.name"></app-text-shell>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <app-text-shell [data]="details?.style"></app-text-shell>
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-slide class="first-slide illustration-and-decoration-slide">
+              <ion-row class="slide-inner-row">
+                <!-- <h4 class="ion-padding">Intro</h4> -->
+                <!--  <ion-row class="description-row">
+              <img
+                src="/assets/images/simple_rectangle.png"
+                class="ion-padding"
+              />
+            </ion-row> -->
+                <form>
+                  <ion-list class="ion-padding">
+                    <ion-item class="ion-padding">
+                      <ion-label>V :</ion-label>
+                      <p [innerHTML]="vVolts" type="number"></p>
+                      <p style="margin-left: 5px;">v</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>I :</ion-label>
+                      <p [innerHTML]="iCur" type="number"></p>
+                      <p style="margin-left: 5px;">A</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>R :</ion-label>
+                      <ion-input clear-input name="resistR" [(ngModel)]="resistR"></ion-input>
+                      <p style="margin-left: 5px;">Ω</p>
+                    </ion-item>
+                  </ion-list>
+                  <div class="ion-padding">
+                    <ion-button color="secondary" expand="block" type="submit" (click)="calculateOhms()">
+                      Submit
+                    </ion-button>
+                  </div>
+                </form>
+              </ion-row>
+            </ion-slide>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </ion-slide>
+
+    <!-- Series Calculations -->
+
+    <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Series'">
+      <ion-row class="slide-inner-row">
+        <ion-card>
+          <img src="/assets/images/series.png" />
+          <ion-card-header>
+            <ion-card-title>
+              <app-text-shell [data]="details?.name"></app-text-shell>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <app-text-shell [data]="details?.style"></app-text-shell>
+            </ion-card-subtitle>
+            <p>The formula we will use is I = V / Rtotal</p>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-slide class="first-slide illustration-and-decoration-slide">
+              <ion-row class="slide-inner-row">
+                <!-- <h4 class="ion-padding">Intro</h4> -->
+                <!--  <ion-row class="description-row">
+          <img
+            src="/assets/images/simple_rectangle.png"
+            class="ion-padding"
+          />
+        </ion-row> -->
+                <form>
+                  <ion-list class="ion-padding">
+                    <ion-item class="ion-padding">
+                      <ion-label>R1 :</ion-label>
+                      <p [innerHTML]="r1" type="number"></p>
+                      <p style="margin-left: 5px;">Ω</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>R2 :</ion-label>
+                      <p [innerHTML]="r2" type="number"></p>
+                      <p style="margin-left: 5px;">Ω</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>R3 :</ion-label>
+                      <p [innerHTML]="r3" type="number"></p>
+                      <p style="margin-left: 5px;">Ω</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Rtotal :</ion-label>
+                      <ion-input clear-input name="seriesRtotal" [(ngModel)]="seriesRtotal"></ion-input>
+                      <p style="margin-left: 5px;">Ω</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Voltage :</ion-label>
+                      <p [innerHTML]="seriesVoltage" type="number"></p>
+                      <p style="margin-left: 5px;">v</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>I :</ion-label>
+                      <ion-input clear-input name="seriesI" [(ngModel)]="seriesI"></ion-input>
+                      <p style="margin-left: 5px;">Amps</p>
+                    </ion-item>
+                  </ion-list>
+                  <div class="ion-padding">
+                    <ion-button color="secondary" expand="block" type="submit" (click)="calculateSeries()">
+                      Submit
+                    </ion-button>
+                  </div>
+                </form>
+              </ion-row>
+            </ion-slide>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </ion-slide>
+
+    <!-- Parallel Calculations -->
+
+    <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Parallel'">
+      <ion-row class="slide-inner-row">
+        <ion-card>
+          <img src="/assets/images/parrallel.png" />
+          <ion-card-header>
+            <ion-card-title>
+              <app-text-shell [data]="details?.name"></app-text-shell>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <app-text-shell [data]="details?.style"></app-text-shell>
+            </ion-card-subtitle>
+            <p>The formula we will use is 1/Rtotal = 1/R1 + 1/R2 +1/R3 + …</p>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-slide class="first-slide illustration-and-decoration-slide">
+              <ion-row class="slide-inner-row">
+                <!-- <h4 class="ion-padding">Intro</h4> -->
+                <!--  <ion-row class="description-row">
+          <img
+            src="/assets/images/simple_rectangle.png"
+            class="ion-padding"
+          />
+        </ion-row> -->
+                <form>
+                  <ion-list class="ion-padding">
+                    <ion-item class="ion-padding">
+                      <ion-label>R1 :</ion-label>
+                      <p [innerHTML]="r1" type="number"></p>
+                      <p style="margin-left: 5px;">Ω</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>R2 :</ion-label>
+                      <p [innerHTML]="r2" type="number"></p>
+                      <p style="margin-left: 5px;">Ω</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>R3 :</ion-label>
+                      <p [innerHTML]="r3" type="number"></p>
+                      <p style="margin-left: 5px;">Ω</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>1/Rtotal :</ion-label>
+                      <ion-input clear-input name="seriesRtotal" [(ngModel)]="seriesRtotal"></ion-input>
+                      <p style="margin-left: 5px;">Ω</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Voltage :</ion-label>
+                      <p [innerHTML]="seriesVoltage" type="number"></p>
+                      <p style="margin-left: 5px;">v</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>I :</ion-label>
+                      <ion-input clear-input name="seriesI" [(ngModel)]="seriesI"></ion-input>
+                      <p style="margin-left: 5px;">Amps</p>
+                    </ion-item>
+                  </ion-list>
+                  <div class="ion-padding">
+                    <ion-button color="secondary" expand="block" type="submit" (click)="calculateParallel()">
+                      Submit
+                    </ion-button>
+                  </div>
+                </form>
+              </ion-row>
+            </ion-slide>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </ion-slide>
+
+    <!-- Force Calculations -->
+
+    <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Force'">
+      <ion-row class="slide-inner-row">
+        <ion-card>
+          <!-- <img src="/assets/images/force.png" /> -->
+          <ion-card-header>
+            <ion-card-title>
+              <app-text-shell [data]="details?.name"></app-text-shell>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <app-text-shell [data]="details?.style"></app-text-shell>
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-slide class="first-slide illustration-and-decoration-slide">
+              <ion-row class="slide-inner-row">
+                <!-- <h4 class="ion-padding">Intro</h4> -->
+                <!--  <ion-row class="description-row">
+              <img
+                src="/assets/images/simple_rectangle.png"
+                class="ion-padding"
+              />
+            </ion-row> -->
+                <form>
+                  <ion-list class="ion-padding">
+                    <ion-item class="ion-padding">
+                      <ion-label>β (Magnetic Flux) :</ion-label>
+                      <p [innerHTML]="mgFlux" type="number"></p>
+                      <p style="margin-left: 5px;">T</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>L (Conductor Length) :</ion-label>
+                      <p [innerHTML]="conLength" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>I (Current) :</ion-label>
+                      <p [innerHTML]="conCurrent" type="number"></p>
+                      <p style="margin-left: 5px;">Amps</p>
+                    </ion-item>
+
+                    <ion-item class="ion-padding">
+                      <ion-label>F :</ion-label>
+                      <ion-input clear-input name="conForce" [(ngModel)]="conForce"></ion-input>
+                      <p style="margin-left: 5px;">Newtons</p>
+                    </ion-item>
+                  </ion-list>
+                  <div class="ion-padding">
+                    <ion-button color="secondary" expand="block" type="submit" (click)="calculateForce()">
+                      Submit
+                    </ion-button>
+                  </div>
+                </form>
+              </ion-row>
+            </ion-slide>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </ion-slide>
+
+    <!-- EMF Calculations -->
+
+    <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='EMF'">
+      <ion-row class="slide-inner-row">
+        <ion-card>
+          <!-- <img src="/assets/images/force.png" /> -->
+          <ion-card-header>
+            <ion-card-title>
+              <app-text-shell [data]="details?.name"></app-text-shell>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <app-text-shell [data]="details?.style"></app-text-shell>
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-slide class="first-slide illustration-and-decoration-slide">
+              <ion-row class="slide-inner-row">
+                <!-- <h4 class="ion-padding">Intro</h4> -->
+                <!--  <ion-row class="description-row">
+              <img
+                src="/assets/images/simple_rectangle.png"
+                class="ion-padding"
+              />
+            </ion-row> -->
+                <form>
+                  <ion-list class="ion-padding">
+                    <ion-item class="ion-padding">
+                      <ion-label>β :</ion-label>
+                      <p [innerHTML]="mgFlux" type="number"></p>
+                      <p style="margin-left: 5px;">T</p>
+
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>L :</ion-label>
+                      <p [innerHTML]="conLength" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>V :</ion-label>
+                      <p [innerHTML]="conCurrent" type="number"></p>
+                      <p style="margin-left: 5px;">m / second</p>
+                    </ion-item>
+
+                    <ion-item class="ion-padding">
+                      <ion-label>E :</ion-label>
+                      <ion-input clear-input name="conForce" [(ngModel)]="conForce"></ion-input>
+                      <p style="margin-left: 5px;">v</p>
+                    </ion-item>
+                  </ion-list>
+                  <div class="ion-padding">
+                    <ion-button color="secondary" expand="block" type="submit" (click)="calculateForce()">
+                      Submit
+                    </ion-button>
+                  </div>
+                </form>
+              </ion-row>
+            </ion-slide>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </ion-slide>
+
+     <!-- Static Calculations -->
+
+     <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Static'">
+      <ion-row class="slide-inner-row">
+        <ion-card>
+          <!-- <img src="/assets/images/force.png" /> -->
+          <ion-card-header>
+            <ion-card-title>
+              <app-text-shell [data]="details?.name"></app-text-shell>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <app-text-shell [data]="details?.style"></app-text-shell>
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-slide class="first-slide illustration-and-decoration-slide">
+              <ion-row class="slide-inner-row">
+                <!-- <h4 class="ion-padding">Intro</h4> -->
+                <!--  <ion-row class="description-row">
+              <img
+                src="/assets/images/simple_rectangle.png"
+                class="ion-padding"
+              />
+            </ion-row> -->
+                <form>
+                  <ion-list class="ion-padding">
+                    <ion-item class="ion-padding">
+                      <ion-label>E (e.m.f) :</ion-label>
+                      <p [innerHTML]="staticEMF" type="number"></p>
+                      <p style="margin-left: 5px;">v</p>
+
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>t :</ion-label>
+                      <p [innerHTML]="staticTime" type="number"></p>
+                      <p style="margin-left: 5px;">seconds</p>
+                    </ion-item>
+          
+                    <ion-item class="ion-padding">
+                      <ion-label>E :</ion-label>
+                      <ion-input clear-input name="magFlux" [(ngModel)]="magFlux"></ion-input>
+                      <p style="margin-left: 5px;">webers</p>
+                    </ion-item>
+                  </ion-list>
+                  <div class="ion-padding">
+                    <ion-button color="secondary" expand="block" type="submit" (click)="calculateStatic()">
+                      Submit
+                    </ion-button>
+                  </div>
+                </form>
+              </ion-row>
+            </ion-slide>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </ion-slide>
+
+
+
+  </ion-slides>
+
+</ion-content>

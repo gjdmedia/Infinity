@@ -1,0 +1,83 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "slug": "Electrons",
+      "icon": "./assets/images/028-pliers.png",
+      "showcaseImage": "./assets/images/electrons.jpg",
+      "name": "Electrons",
+      
+      "style": "How many electrons make one ampere?"
+      
+    },
+    {
+      "id": 2,
+      "slug": "Resistance",
+      "icon": "./assets/images/028-pliers.png",
+      "showcaseImage": "./assets/images/resistance.jpg",
+      "name": "Resistance",
+      
+      "style": "Calculate the resistance of annealed copper cable"
+      
+    },
+    {
+      "id": 3,
+      "slug": "Ohms",
+      "icon": "./assets/images/028-pliers.png",
+      "showcaseImage": "./assets/images/ohms.jpg",
+      "name": "Ohms",
+      
+      "style": "If a current of (I) amps is flowing through a circuit at a potential difference of (V) Volts what is the resistance? "
+      
+    },
+    {
+      "id": 4,
+      "slug": "Series",
+      "icon": "./assets/images/028-pliers.png",
+      "showcaseImage": "./assets/images/series.jpg",
+      "name": "Series",
+      "style": "Calculate the current flowing in the circuit to 1 decimal place."
+    },
+    {
+      "id": 5,
+      "slug": "Parallel",
+      "icon": "./assets/images/028-pliers.png",
+      "showcaseImage": "./assets/images/parallel.jpg",
+      "name": "Parallel",
+      "style": "Calculate the current flowing in the circuit to 1 decimal place."
+    }
+    ,
+    {
+      "id": 6,
+      "slug": "Force",
+      "icon": "./assets/images/028-pliers.png",
+      "showcaseImage": "./assets/images/force.jpg",
+      "name": "Force",
+      "style": "Calculate the force on a current-carrying conductor to 1 decimal place. The formula we use is F = βLI"
+    } ,
+    {
+      "id": 7,
+      "slug": "EMF",
+      "icon": "./assets/images/028-pliers.png",
+      "showcaseImage": "./assets/images/emf.jpg",
+      "name": "EMF",
+      "style": "If a conductor of length (l) m cuts a magnetic field of (β) T at a velocity of (v) m/s, what is the generated e.m.f. The formula we use is Ε = βlv  "
+    } ,
+    {
+      "id": 8,
+      "slug": "Static",
+      "icon": "./assets/images/028-pliers.png",
+      "showcaseImage": "./assets/images/static.jpg",
+      "name": "Static",
+      "style": "A coil induces an e.m.f. of (E) V and it takes (t) ms for the current to fall to zero, calculate the flux change. The formula we use is Φ = Et "
+    } ,
+    {
+      "id": 9,
+      "slug": "Transformer",
+      "icon": "./assets/images/028-pliers.png",
+      "showcaseImage": "./assets/images/transformer.jpg",
+      "name": "Transformer",
+      "style": "What’s the circumference of a saw blade with a radius of: "
+    } 
+  ]
+}

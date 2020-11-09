@@ -1,0 +1,53 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "slug": "Area",
+      "icon": "./assets/images/032-wood plane.png",
+      "showcaseImage": "./assets/images/area.jpg",
+      "name": "Area",
+      "style": "Calculate the area of the room:"
+    },
+    {
+      "id": 2,
+      "slug": "Perimiter",
+      "icon": "./assets/images/032-wood plane.png",
+      "showcaseImage": "./assets/images/place.jpg",
+      "name": "Perimiter",
+      "style": "Calculate the perimiter of the room:"
+    },
+    {
+      "id": 3,
+      "slug": "Carpenters",
+      "icon": "./assets/images/032-wood plane.png",
+      "showcaseImage": "./assets/images/carpenters.jpg",
+      "name": "Carpenters",
+      "style": "How many additional carpenters will be need over the next 5 years? "
+    },
+    {
+      "id": 4,
+      "slug": "Windows",
+      "icon": "./assets/images/032-wood plane.png",
+      "showcaseImage": "./assets/images/windows.jpg",
+      "name": "Windows",
+      "style": "You need to fit some window boards to a house. Calculate the length of timber needed in linear mm"
+    },
+    {
+      "id": 5,
+      "slug": "Doors",
+      "icon": "./assets/images/032-wood plane.png",
+      "showcaseImage": "./assets/images/area.jpg",
+      "name": "Doors",
+      "style": "You are required to fit architraves to a number of doors. In linear metres how much timber do you require?"
+    }
+    ,
+    {
+      "id": 6,
+      "slug": "Travel Time",
+      "icon": "./assets/images/032-wood plane.png",
+      "showcaseImage": "./assets/images/travel.jpg",
+      "name": "Travel Time",
+      "style": "If a van travels at the the following speed how far will it travel?"
+    } 
+  ]
+}

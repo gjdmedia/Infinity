@@ -1,0 +1,694 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="app/categories/painting"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <app-text-shell [data]="details?.name"></app-text-shell>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="painting-details-content">
+  <ion-row class="image-row">
+    <ion-col size="12">
+      <app-image-shell [display]="'cover'" animation="spinner" class="add-overlay showcase-image"
+        [src]="details?.showcaseImage">
+        <app-aspect-ratio [ratio]="{ w: 64, h: 40 }">
+          <div class="icon-wrapper">
+            <app-aspect-ratio [ratio]="{ w: 1, h: 1 }">
+              <app-image-shell class="icon-image" [src]="details?.icon"></app-image-shell>
+            </app-aspect-ratio>
+          </div>
+        </app-aspect-ratio>
+      </app-image-shell>
+    </ion-col>
+  </ion-row>
+  <!-- <ion-row class="description-row">
+    <ion-col size="9">
+      <h3 class="details-name">
+        <app-text-shell [data]="details?.name"></app-text-shell>
+      </h3>
+      <p class="details-style">
+        <app-text-shell [data]="details?.style"></app-text-shell>
+      </p>
+    </ion-col>
+  </ion-row> -->
+
+
+
+  <ion-slides class="walkthrough-slides" pager="true" [options]="slidesOptions">
+
+
+    <!-- Area Calculations -->
+
+    <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Area'">
+      <ion-row class="slide-inner-row">
+        <h4 class="ion-padding">Intro</h4>
+
+        <ion-card>
+          <img src="/assets/images/simple_rectangle_area.png" />
+          <ion-card-header>
+            <ion-card-title>
+              <app-text-shell [data]="details?.name"></app-text-shell>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <app-text-shell [data]="details?.style"></app-text-shell>
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-slide class="first-slide illustration-and-decoration-slide">
+              <ion-row class="slide-inner-row">
+                <!-- <h4 class="ion-padding">Intro</h4> -->
+                <!--  <ion-row class="description-row">
+                  <img
+                    src="/assets/images/simple_rectangle.png"
+                    class="ion-padding"
+                  />
+                </ion-row> -->
+                <form>
+                  <ion-list class="ion-padding">
+                    <ion-item class="ion-padding">
+                      <ion-label>Side 1:</ion-label>
+                      <p [innerHTML]="side1" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Side 2:</ion-label>
+                      <p [innerHTML]="side2" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Total:</ion-label>
+                      <ion-input clear-input name="totalArea" [(ngModel)]="totalArea"></ion-input>
+                      <p style="margin-left: 5px;">m2</p>
+                    </ion-item>
+                  </ion-list>
+                  <div class="ion-padding">
+                    <ion-button color="secondary" expand="block" type="submit" (click)="calculateSimpleArea()">
+                      Submit
+                    </ion-button>
+                  </div>
+                </form>
+              </ion-row>
+            </ion-slide>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </ion-slide>
+    <ion-slide class="last-slide illustration-and-decoration-slide" *ngIf="details?.name =='Area'">
+      <ion-row class="slide-inner-row">
+        <h4 class="ion-padding">Advanced</h4>
+        <ion-card>
+          <img src="/assets/images/simple_rectangle_door.png" />
+          <ion-card-header>
+            <ion-card-title>
+              <app-text-shell [data]="details?.name"></app-text-shell>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <app-text-shell [data]="details?.style"></app-text-shell>
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-slide class="first-slide illustration-and-decoration-slide">
+              <ion-row class="slide-inner-row">
+                <!-- <h4 class="ion-padding">Intro</h4> -->
+                <!--  <ion-row class="description-row">
+                  <img
+                    src="/assets/images/simple_rectangle.png"
+                    class="ion-padding"
+                  />
+                </ion-row> -->
+                <form>
+                  <ion-list class="ion-padding">
+                    <ion-item class="ion-padding">
+                      <ion-label>Side 1 :</ion-label>
+                      <p [innerHTML]="side1" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Side 2 :</ion-label>
+                      <p [innerHTML]="side2" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Wall Area :</ion-label>
+                      <ion-input clear-input name="totalArea" [(ngModel)]="totalArea"></ion-input>
+                      <p style="margin-left: 5px;">m2</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Door Width :</ion-label>
+                      <p [innerHTML]="doorWidth" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Door Height :</ion-label>
+                      <p [innerHTML]="doorHeight" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
+                    </ion-item>
+
+                    <ion-item class="ion-padding">
+                      <ion-label>Door Area :</ion-label>
+                      <ion-input clear-input name="doorArea" [(ngModel)]="doorArea"></ion-input>
+                      <p style="margin-left: 5px;">m2</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Area Required :</ion-label>
+                      <ion-input clear-input name="totalReducedArea" [(ngModel)]="totalReducedArea"></ion-input>
+                      <p style="margin-left: 5px;">m2</p>
+                    </ion-item>
+                  </ion-list>
+                  <div class="ion-padding">
+                    <ion-button color="secondary" expand="block" type="submit" (click)="calculateAdvancedArea()">
+                      Submit
+                    </ion-button>
+                  </div>
+                </form>
+              </ion-row>
+            </ion-slide>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </ion-slide>
+
+    <!-- VAT Calculations -->
+
+    <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='VAT'">
+      <ion-row class="slide-inner-row">
+        <ion-card>
+          <!-- <img src="/assets/images/simple_rectangle_area.png" /> -->
+          <ion-card-header>
+            <ion-card-title>
+              <app-text-shell [data]="details?.name"></app-text-shell>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <app-text-shell [data]="details?.style"></app-text-shell>
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-slide class="first-slide illustration-and-decoration-slide">
+              <ion-row class="slide-inner-row">
+
+                <!--  <ion-row class="description-row">
+                  <img
+                    src="/assets/images/simple_rectangle.png"
+                    class="ion-padding"
+                  />
+                </ion-row> -->
+                <form>
+                  <ion-list class="ion-padding">
+                    <ion-item class="ion-padding">
+                      <ion-label>Tins of Paint: £</ion-label>
+                      <p [innerHTML]="costPaint" type="number"></p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Caulk: £</ion-label>
+                      <p [innerHTML]="costCaulk" type="number"></p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Paint Brushes: £</ion-label>
+                      <p [innerHTML]="costBrushes" type="number"></p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Masking Tape: £</ion-label>
+                      <p [innerHTML]="costTape" type="number"></p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Total before VAT: £</ion-label>
+                      <ion-input clear-input name="totalXVat" [(ngModel)]="totalXVat"></ion-input>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>VAT at 20%: £</ion-label>
+                      <ion-input clear-input name="vat" [(ngModel)]="vat"></ion-input>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Total Cost: £</ion-label>
+                      <ion-input clear-input name="totalIncVat" [(ngModel)]="totalIncVat"></ion-input>
+                    </ion-item>
+                  </ion-list>
+                  <div class="ion-padding">
+                    <ion-button color="secondary" expand="block" type="submit" (click)="calculateSimpleVAT()">
+                      Submit
+                    </ion-button>
+                  </div>
+                </form>
+              </ion-row>
+            </ion-slide>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </ion-slide>
+
+    <!-- Discount Calculations -->
+
+    <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Discount'">
+
+      <ion-row class="slide-inner-row">
+        <ion-card>
+          <!-- <img src="/assets/images/simple_rectangle_area.png" /> -->
+          <ion-card-header>
+            <ion-card-title>
+              <app-text-shell [data]="details?.name"></app-text-shell>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <app-text-shell [data]="details?.style"></app-text-shell>
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-slide class="first-slide illustration-and-decoration-slide">
+              <ion-row class="slide-inner-row">
+                <!--  <ion-row class="description-row">
+                  <img
+                    src="/assets/images/simple_rectangle.png"
+                    class="ion-padding"
+                  />
+                </ion-row> -->
+                <form>
+                  <ion-list class="ion-padding">
+                    <ion-item class="ion-padding">
+                      <ion-label>Brushes : £</ion-label>
+                      <p [innerHTML]="brushesCost" type="number"></p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Rollers : £</ion-label>
+                      <p [innerHTML]="rollersCost" type="number"></p>
+                    </ion-item>
+                    <ion-item type="submit" class="ion-padding">
+                      <ion-label>Masking Tape : £</ion-label>
+                      <p [innerHTML]="maskingCost" type="number"></p>
+                    </ion-item>
+                    <ion-item type="submit" class="ion-padding">
+                      <ion-label>Caulk : £</ion-label>
+                      <p [innerHTML]="caulkCost" type="number"></p>
+                    </ion-item>
+                    <ion-item type="submit" class="ion-padding">
+                      <ion-label>Drop Cloth : £</ion-label>
+                      <p [innerHTML]="dropCost" type="number"></p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Discount : %</ion-label>
+                      <p [innerHTML]="discount" type="number"></p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Total before Discount :</ion-label>
+                      <ion-input name="totalXDiscount" [(ngModel)]="totalXDiscount" maxlength="6"></ion-input>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Discount Total:</ion-label>
+                      <ion-input name="discountTotal" [(ngModel)]="discountTotal" maxlength="6"></ion-input>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Final Price:</ion-label>
+                      <ion-input name="totalCost" [(ngModel)]="totalCost" maxlength="6"></ion-input>
+                    </ion-item>
+
+
+                  </ion-list>
+                  <div class="ion-padding">
+                    <ion-button color="secondary" expand="block" type="submit" (click)="calculateDiscount()">
+                      Submit
+                    </ion-button>
+                  </div>
+                </form>
+              </ion-row>
+            </ion-slide>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </ion-slide>
+
+    <!-- Labour Calculations -->
+
+    <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Labour'">
+
+      <ion-row class="slide-inner-row">
+        <ion-card>
+          <!-- <img src="/assets/images/simple_rectangle_area.png" /> -->
+          <ion-card-header>
+            <ion-card-title>
+              <app-text-shell [data]="details?.name"></app-text-shell>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <app-text-shell [data]="details?.style"></app-text-shell>
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-slide class="first-slide illustration-and-decoration-slide">
+              <ion-row class="slide-inner-row">
+                <!--  <ion-row class="description-row">
+                  <img
+                    src="/assets/images/simple_rectangle.png"
+                    class="ion-padding"
+                  />
+                </ion-row> -->
+                <form>
+                  <ion-list class="ion-padding">
+                    <ion-item class="ion-padding">
+                      <ion-label>Labour Cost : £</ion-label>
+                      <p [innerHTML]="labourPerHour" type="number"></p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Length of the Job : £</ion-label>
+                      <p [innerHTML]="labourHours" type="number"></p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Total Cost :</ion-label>
+                      <ion-input name="totalCost" [(ngModel)]="totalLabourCost" maxlength="6"></ion-input>
+                    </ion-item>
+
+
+                  </ion-list>
+                  <div class="ion-padding">
+                    <ion-button color="secondary" expand="block" type="submit" (click)="calculateLabour()">
+                      Submit
+                    </ion-button>
+                  </div>
+                </form>
+              </ion-row>
+            </ion-slide>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </ion-slide>
+
+
+
+    <!-- Triangle Calculations -->
+
+    <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Triangle'">
+      <ion-row class="slide-inner-row">
+        <h4 class="ion-padding">Intro</h4>
+
+        <ion-card>
+          <img src="/assets/images/simple_triangle.png" />
+          <ion-card-header>
+            <ion-card-title>
+              <app-text-shell [data]="details?.name"></app-text-shell>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <app-text-shell [data]="details?.style"></app-text-shell>
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-slide class="first-slide illustration-and-decoration-slide">
+              <ion-row class="slide-inner-row">
+                <!-- <h4 class="ion-padding">Intro</h4> -->
+                <!--  <ion-row class="description-row">
+                  <img
+                    src="/assets/images/simple_rectangle.png"
+                    class="ion-padding"
+                  />
+                </ion-row> -->
+                <form>
+                  <ion-list class="ion-padding">
+                    <ion-item class="ion-padding">
+                      <ion-label>Side 1:</ion-label>
+                      <p [innerHTML]="side1Tri" type="number"></p>
+                      <p style="margin-left: 5px;">cm</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Side 2:</ion-label>
+                      <p [innerHTML]="side2Tri" type="number"></p>
+                      <p style="margin-left: 5px;">cm</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Total:</ion-label>
+                      <ion-input clear-input name="totalTri" [(ngModel)]="totalTri"></ion-input>
+                      <p style="margin-left: 5px;">cm2</p>
+                    </ion-item>
+                  </ion-list>
+                  <div class="ion-padding">
+                    <ion-button color="secondary" expand="block" type="submit" (click)="calculateSimpleTri()">
+                      Submit
+                    </ion-button>
+                  </div>
+                </form>
+              </ion-row>
+            </ion-slide>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </ion-slide>
+
+
+    <!-- Wall Area Calculations -->
+
+    <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Wall Area'">
+      <ion-row class="slide-inner-row">
+        <h4 class="ion-padding">Intro</h4>
+
+        <ion-card>
+          <img src="/assets/images/wall_area.png" />
+          <ion-card-header>
+            <ion-card-title>
+              <app-text-shell [data]="details?.name"></app-text-shell>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <app-text-shell [data]="details?.style"></app-text-shell>
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-slide class="first-slide illustration-and-decoration-slide">
+              <ion-row class="slide-inner-row">
+                <!-- <h4 class="ion-padding">Intro</h4> -->
+                <!--  <ion-row class="description-row">
+              <img
+                src="/assets/images/simple_rectangle.png"
+                class="ion-padding"
+              />
+            </ion-row> -->
+                <form>
+                  <ion-list class="ion-padding">
+                    <ion-item class="ion-padding">
+                      <ion-label>Depth :</ion-label>
+                      <p [innerHTML]="wallDepth" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Width :</ion-label>
+                      <p [innerHTML]="wallWidth" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Height :</ion-label>
+                      <p [innerHTML]="wallHeight" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Back Left :</ion-label>
+                      <ion-input clear-input name="backLeft" [(ngModel)]="backLeft"></ion-input>
+                      <p style="margin-left: 5px;">m</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Back Right :</ion-label>
+                      <ion-input clear-input name="backRight" [(ngModel)]="backRight"></ion-input>
+                      <p style="margin-left: 5px;">m</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Front Left :</ion-label>
+                      <ion-input clear-input name="frontLeft" [(ngModel)]="frontLeft"></ion-input>
+                      <p style="margin-left: 5px;">m</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Front Right :</ion-label>
+                      <ion-input clear-input name="frontRight" [(ngModel)]="frontRight"></ion-input>
+                      <p style="margin-left: 5px;">m</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Total Area :</ion-label>
+                      <ion-input clear-input name="totalWallArea" [(ngModel)]="totalWallArea"></ion-input>
+                      <p style="margin-left: 5px;">m2</p>
+                    </ion-item>
+                  </ion-list>
+                  <div class="ion-padding">
+                    <ion-button color="secondary" expand="block" type="submit" (click)="calculateWallArea()">
+                      Submit
+                    </ion-button>
+                  </div>
+                </form>
+              </ion-row>
+            </ion-slide>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </ion-slide>
+
+    <!-- Paint Tins Calculations -->
+
+    <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Paint'">
+      <ion-row class="slide-inner-row">
+        <h4 class="ion-padding">Intro</h4>
+
+        <ion-card>
+          <!-- <img src="/assets/images/wall_area.png" /> -->
+          <ion-card-header>
+            <ion-card-title>
+              <app-text-shell [data]="details?.name"></app-text-shell>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <app-text-shell [data]="details?.style"></app-text-shell>
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-slide class="first-slide illustration-and-decoration-slide">
+              <ion-row class="slide-inner-row">
+                <!-- <h4 class="ion-padding">Intro</h4> -->
+                <!--  <ion-row class="description-row">
+              <img
+                src="/assets/images/simple_rectangle.png"
+                class="ion-padding"
+              />
+            </ion-row> -->
+                <form>
+                  <ion-list class="ion-padding">
+                    <ion-item class="ion-padding">
+                      <ion-label>Coverage needed :</ion-label>
+                      <p [innerHTML]="coverage" type="number"></p>
+                      <p style="margin-left: 5px;">m2</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>One tin covers :</ion-label>
+                      <p [innerHTML]="tinsCoverage" type="number"></p>
+                      <p style="margin-left: 5px;">m2</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Tins needed :</ion-label>
+                      <ion-input clear-input name="tinsNeeded" [(ngModel)]="tinsNeeded"></ion-input>
+                      <p style="margin-left: 5px;">tins</p>
+                    </ion-item>
+                  </ion-list>
+                  <div class="ion-padding">
+                    <ion-button color="secondary" expand="block" type="submit" (click)="calculateTins()">
+                      Submit
+                    </ion-button>
+                  </div>
+                </form>
+              </ion-row>
+            </ion-slide>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </ion-slide>
+
+    <!-- House Time Calculations -->
+
+    <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='House Paint'">
+      <ion-row class="slide-inner-row">
+        <ion-card>
+          <!-- <img src="/assets/images/wall_area.png" /> -->
+          <ion-card-header>
+            <ion-card-title>
+              <app-text-shell [data]="details?.name"></app-text-shell>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <app-text-shell [data]="details?.style"></app-text-shell>
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-slide class="first-slide illustration-and-decoration-slide">
+              <ion-row class="slide-inner-row">
+                <!-- <h4 class="ion-padding">Intro</h4> -->
+                <!--  <ion-row class="description-row">
+              <img
+                src="/assets/images/simple_rectangle.png"
+                class="ion-padding"
+              />
+            </ion-row> -->
+                <form>
+                  <ion-list class="ion-padding">
+                    <ion-item class="ion-padding">
+                      <ion-label>Exterior Size :</ion-label>
+                      <p [innerHTML]="coverage" type="number"></p>
+                      <p style="margin-left: 5px;">m2</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>You can paint :</ion-label>
+                      <p [innerHTML]="tinsCoverage" type="number"></p>
+                      <p style="margin-left: 5px;">m2 / hour</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Tins needed :</ion-label>
+                      <ion-input clear-input name="tinsNeeded" [(ngModel)]="tinsNeeded"></ion-input>
+                      <p style="margin-left: 5px;">tins</p>
+                    </ion-item>
+                  </ion-list>
+                  <div class="ion-padding">
+                    <ion-button color="secondary" expand="block" type="submit" (click)="calculateTins()">
+                      Submit
+                    </ion-button>
+                  </div>
+                </form>
+              </ion-row>
+            </ion-slide>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </ion-slide>
+
+    <!-- Wallpaper Calculations -->
+
+    <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Wallpaper'">
+      <ion-row class="slide-inner-row">
+        <ion-card>
+          <!-- <img src="/assets/images/wall_area.png" /> -->
+          <ion-card-header>
+            <ion-card-title>
+              <app-text-shell [data]="details?.name"></app-text-shell>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <app-text-shell [data]="details?.style"></app-text-shell>
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-slide class="first-slide illustration-and-decoration-slide">
+              <ion-row class="slide-inner-row">
+                <!-- <h4 class="ion-padding">Intro</h4> -->
+                <!--  <ion-row class="description-row">
+              <img
+                src="/assets/images/simple_rectangle.png"
+                class="ion-padding"
+              />
+            </ion-row> -->
+                <form>
+                  <ion-list class="ion-padding">
+                    <ion-item class="ion-padding">
+                      <ion-label>Wall Size :</ion-label>
+                      <p [innerHTML]="wallSize" type="number"></p>
+                      <p style="margin-left: 5px;">m2</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Cost per roll : £ </ion-label>
+                      <p [innerHTML]="paperCost" type="number"></p>
+                    
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Roll coverage :</ion-label>
+                      <p [innerHTML]="rollCoverage" type="number"></p>
+                      <p style="margin-left: 5px;">m2</p>
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Rolls required :</ion-label>
+                      <ion-input clear-input name="rollsRequired" [(ngModel)]="rollsRequired"></ion-input>
+                      <p style="margin-left: 5px;">rolls</p>
+                    </ion-item>
+                
+                    <ion-item class="ion-padding">
+                      <ion-label>Total cost : £</ion-label>
+                      <ion-input clear-input name="rollsCost" [(ngModel)]="rollsCost"></ion-input>
+                    </ion-item>
+                  </ion-list>
+                  <div class="ion-padding">
+                    <ion-button color="secondary" expand="block" type="submit" (click)="calculateWallpaper()">
+                      Submit
+                    </ion-button>
+                  </div>
+                </form>
+              </ion-row>
+            </ion-slide>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

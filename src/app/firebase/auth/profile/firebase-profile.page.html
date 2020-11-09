@@ -1,0 +1,43 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="firebase/auth/sign-in"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="user-content">
+  <h2 class="auth-title">
+    <br/>
+  </h2>
+  <img src="/assets/images/ig_logo_black.png" alt="">
+  <h5 style="text-align: center;">Profile</h5>
+
+  <ion-list class="inputs-list" lines="full">
+    <ion-item class="input-item">
+      <ion-label>Name: </ion-label>
+      <ion-input clear-input name="name" [(ngModel)]="name"></ion-input>
+    </ion-item>
+    <ion-item class="input-item">
+      <ion-label>Email: </ion-label>
+      <ion-input clear-input name="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <ion-item class="input-item">
+      <ion-label>Tutor: </ion-label>
+      <ion-input clear-input name="tutor" [(ngModel)]="tutor"></ion-input>
+    </ion-item>
+    <ion-item class="input-item">
+      <ion-label>Course: </ion-label>
+      <ion-input clear-input name="course" [(ngModel)]="course"></ion-input>
+    </ion-item>    
+  </ion-list>
+  <ion-button class="signup-btn"  fill="clear" expand="block" (click)="updateProfilePage()">
+    Update account
+  </ion-button>
+  <ion-button class="signup-btn"  fill="clear" expand="block" (click)="signOut()">
+    Sign Out
+  </ion-button>
+  <ion-button class="signup-btn"  fill="clear" expand="block" (click)="deleteAccount()">
+    Delete Account
+  </ion-button>
+</ion-content>

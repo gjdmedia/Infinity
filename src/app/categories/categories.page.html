@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Subjects
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="categories-list">
+    <ion-col class="category-item travel-category" size="12">
+      <app-image-shell [display]="'cover'" class="category-cover" animation="spinner" [src]="'./assets/images/carpentry.jpg'">
+        <app-aspect-ratio [ratio]="{w:75, h:30}">
+          <a class="category-anchor" [routerLink]="['/app/categories/carpentry']">
+            <h2 class="category-title">Carpentry</h2>
+          </a>
+        </app-aspect-ratio>
+      </app-image-shell>
+    </ion-col>
+    <ion-col class="category-item fashion-category" size="6">
+      <app-image-shell [display]="'cover'" class="category-cover" animation="spinner" [src]="'./assets/images/paint.jpg'">
+        <app-aspect-ratio [ratio]="{w:1, h:1}">
+          <a class="category-anchor" [routerLink]="['/app/categories/painting']">
+            <h2 class="category-title">Painting</h2>
+          </a>
+        </app-aspect-ratio>
+      </app-image-shell>
+    </ion-col>
+    <ion-col class="category-item carpentry-category" size="6">
+      <app-image-shell [display]="'cover'" class="category-cover" animation="spinner" [src]="'./assets/images/electrical.jpg'">
+        <app-aspect-ratio [ratio]="{w:1, h:1}">
+          <a class="category-anchor" [routerLink]="['/app/categories/electrical']">
+            <h2 class="category-title">Electrical</h2>
+          </a>
+        </app-aspect-ratio>
+      </app-image-shell>
+    </ion-col>
+    <ion-col class="category-item deals-category" size="12">
+      <app-image-shell [display]="'cover'" class="category-cover" animation="spinner" [src]="'./assets/images/brick.jpg'">
+        <app-aspect-ratio [ratio]="{w:75, h:30}">
+          <a class="category-anchor" [routerLink]="['/app/categories/brick']">
+            <h2 class="category-title">Brick</h2>
+          </a>
+        </app-aspect-ratio>
+      </app-image-shell>
+    </ion-col>
+    <ion-col class="category-item travel-category" size="6">
+      <app-image-shell [display]="'cover'" class="category-cover" animation="spinner" [src]="'./assets/images/woodbased.jpg'">
+        <app-aspect-ratio [ratio]="{w:1, h:1}">
+          <a class="category-anchor" [routerLink]="['/app/categories/wood']">
+            <h2 class="category-title">Wood Based</h2>
+          </a>
+        </app-aspect-ratio>
+      </app-image-shell>
+    </ion-col>
+    <ion-col class="category-item carpentry-category" size="6">
+      <app-image-shell [display]="'cover'" class="category-cover" animation="spinner" [src]="'./assets/images/plumbing.jpg'">
+        <app-aspect-ratio [ratio]="{w:1, h:1}">
+          <a class="category-anchor" [routerLink]="['/app/categories/plumbing']">
+            <h2 class="category-title">Plumbing</h2>
+          </a>
+        </app-aspect-ratio>
+      </app-image-shell>
+    </ion-col>
+    <ion-col class="category-item real-estate-category" size="12">
+      <app-image-shell [display]="'cover'" class="category-cover" animation="spinner" [src]="'./assets/images/roofing.jpg'">
+        <app-aspect-ratio [ratio]="{w:75, h:30}">
+          <a class="category-anchor" [routerLink]="['/app/categories/roofing']">
+            <h2 class="category-title">Roofing</h2>
+          </a>
+        </app-aspect-ratio>
+      </app-image-shell>
+    </ion-col>
+  </ion-row>
+</ion-content>
