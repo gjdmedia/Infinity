@@ -1,4 +1,4 @@
-import { Component, OnInit,AfterViewInit, ViewChild, HostBinding } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, HostBinding } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ToastController } from '@ionic/angular';
@@ -7,6 +7,7 @@ import { RoofingDetailsModel } from './roofing-details.model';
 import { IonSlides, MenuController } from '@ionic/angular';
 import { analytics } from 'firebase';
 import { compileDirectiveFromRender2 } from '@angular/compiler/src/render3/view/compiler';
+import { AnyTxtRecord } from 'dns';
 
 
 @Component({
@@ -16,7 +17,7 @@ import { compileDirectiveFromRender2 } from '@angular/compiler/src/render3/view/
     './styles/roofing-details.page.scss',
     './styles/roofing-details.shell.scss'
   ]
-  
+
 })
 export class RoofingDetailsPage implements OnInit {
   // Gather all component subscription in one place. Can be one Subscription or multiple (chained using the Subscription.add() method)
@@ -26,51 +27,74 @@ export class RoofingDetailsPage implements OnInit {
     }
   };
 
-  
-  subscriptions: Subscription;
-  side1: any;
-  side2: any;
-  side3: any;
-  side4: any;
-  side1a: any;
-  side2a: any;
-  side3a: any;
-  side4a: any;
-  side5a: any;
-  side6a: any;
-  spindleThickness: any;
-  spindlesNeeded: any;
-  spindleSpace: any;
-  newelDistance: any;
-  joistLength: any;
-  rotAmount: any;
-  joistReplacement: any;
-  total: any;
-  totala: any;
-  totalArea: any;
-  totalTins: any;
-  costTimber: any;
-  costDelivery: any;
-  totalXVat: any;
-  vat: any;
-  totalIncVat: any;
-  totalPlasterArea: any;
-  totalPlasterAreaDoubled: any;
-  plasterCoverage: any;
-  numberOfBoards: any;
-  timberCost: any;
-  screwsCost: any;
-  plugsCost: any;
-  discount: any;
-  totalXDiscount: any;
-  discountTotal: any;
-  totalCost: any;
-  numerator: any;
-  denominator: any;
-  radius: any;
-  diameter: any;
-  circumference: any;
 
+  subscriptions: Subscription;
+
+  // Labour
+
+  labourCost: any;
+  labourHours: any;
+  totalPay: any;
+
+  // Discount
+  orderCost: any;
+  discount: any;
+  discountValue: any;
+  finalCost: any;
+
+  //Breakages
+  numberTiles: any;
+  breakage: any;
+  totalTiles: any;
+
+  // Pallet & Cost
+  numberPalletTiles: any;
+  numberPerPallet: any;
+  pallettsNeeded: any;
+  totalTilesOrdered: any;
+  spareTiles: any;
+  costPerTile: any;
+  sparesIncome: any;
+  deliveryCharge: any;
+  costVAT: any;
+  totalTilesCost: any;
+  totalCostIncVAT: any;
+
+   // Cement
+
+   cement: any;
+   cementRequired: any;
+   sand: any;
+   sandRequired: any;
+   cement1: any;
+   cementRequired1: any;
+   sand1: any;
+   sandRequired1: any;
+   totalMix: any;
+   sandMix: any;
+   cementMix: any;
+
+   // Gable
+  rise:any;
+  span:any;
+  length:any;
+  slope:any;
+  singleArea:any;
+  totalArea:any;
+  halfSpan:any;
+  riseSquared:any;
+
+  //Tiles & Gutter
+  roofWidth:any;
+  roofHeight:any;
+  roofArea:any;
+  tilesPerSqM:any;
+  roofTilesNeeded:any;
+  breakageAllowance:any;
+  totalTilesRoof:any;
+  totalGuttering:any;
+  
+  
 
   details: RoofingDetailsModel;
 
@@ -84,86 +108,88 @@ export class RoofingDetailsPage implements OnInit {
     return (this.details && this.details.isShell) ? true : false;
   }
 
-  
 
-  constructor(public menu: MenuController, private route: ActivatedRoute, public toastController: ToastController) { 
+
+  constructor(public menu: MenuController, private route: ActivatedRoute, public toastController: ToastController) {
 
     this.generateSides();
 
   }
 
-    // Disable side menu for this page
-    ionViewDidEnter(): void {
-      this.menu.enable(true);
-    }
-  
-    // Restore to default when leaving this page
-    ionViewDidLeave(): void {
-      this.menu.enable(true);
-    }
+  // Disable side menu for this page
+  ionViewDidEnter(): void {
+    this.menu.enable(true);
+  }
 
-    ngAfterViewInit(): void {
-      // ViewChild is set
+  // Restore to default when leaving this page
+  ionViewDidLeave(): void {
+    this.menu.enable(true);
+  }
+
+  ngAfterViewInit(): void {
+    // ViewChild is set
+    this.slides.isBeginning().then(isBeginning => {
+      this.isFirstSlide = isBeginning;
+    });
+    this.slides.isEnd().then(isEnd => {
+      this.isLastSlide = isEnd;
+    });
+
+    // Subscribe to changes
+    this.slides.ionSlideWillChange.subscribe(changes => {
       this.slides.isBeginning().then(isBeginning => {
         this.isFirstSlide = isBeginning;
       });
       this.slides.isEnd().then(isEnd => {
         this.isLastSlide = isEnd;
       });
-  
-      // Subscribe to changes
-      this.slides.ionSlideWillChange.subscribe(changes => {
-        this.slides.isBeginning().then(isBeginning => {
-          this.isFirstSlide = isBeginning;
-        });
-        this.slides.isEnd().then(isEnd => {
-          this.isLastSlide = isEnd;
-        });
-      });
-    }
-  
-    skipWalkthrough(): void {
-      // Skip to the last slide
-      this.slides.length().then(length => {
-        this.slides.slideTo(length);
-      });
-    }
+    });
+  }
 
-  generateSides():void {
-    this.side1 = Math.floor(Math.random() * 30) + 5; 
-    this.side2 = this.side1 /2;
-    console.trace('Random: ', this.side1)
+  skipWalkthrough(): void {
+    // Skip to the last slide
+    this.slides.length().then(length => {
+      this.slides.slideTo(length);
+    });
+  }
 
-    this.side1a = Math.floor(Math.random() * 30) + 5; 
-    this.side2a = this.side1a * 0.384615385;
-    this.side2a = Math.round(this.side2a * 10) / 10;
+  generateSides(): void {
+    var precision = 100; // 2 decimals
 
-    this.side5a = this.side1 * 0.57;
-    this.side5a = Math.round(this.side5a * 10) / 10;
+    // Labour
+    this.labourHours = Math.floor(Math.random() * 30) + 10;
+    this.labourCost = Math.floor(Math.random() * (25.99 * precision - 1.00 * precision) + 1 * precision) / (1 * precision);
 
-    this.side6a = this.side1 * 0.615;
-    this.side6a = Math.round(this.side6a * 10) / 10;
+    // Discount
+    this.discount = Math.floor(Math.random() * 30) + 10;
+    this.orderCost = Math.floor(Math.random() * (250.99 * precision - 100.00 * precision) + 1 * precision) / (1 * precision);
 
-    this.spindleThickness = Math.floor(Math.random() * 35) + 30; 
-    this.newelDistance = Math.floor(Math.random() * 4000) + 3000; 
+    // Breakages
+    this.numberTiles = Math.floor(Math.random() * 900) + 700;
+    this.breakage = Math.floor(Math.random() * 30) + 1;
 
-    this.costTimber = Math.floor(Math.random() * 500) + 30; 
-    this.costDelivery = Math.floor(Math.random() * 20) + 5; 
+    //Pallet & Cost
+    this.numberPalletTiles = Math.floor(Math.random() * 3500) + 700;
+    this.numberPerPallet = Math.floor(Math.random() * 300) + 200;
+    this.costPerTile = Math.floor(Math.random() * (0.99 * precision - 0.4 * precision) + 1 * precision) / (1 * precision);
+    this.deliveryCharge = Math.floor(Math.random() * 70) + 20;
 
-    this.plasterCoverage = 2.88;
+     //Cement
+     this.cement = Math.floor(Math.random() * 100) + 10;
+     this.sand = this.cement * 3;
+     this.cement1 = Math.floor(Math.random() * 100) + 10;
+     this.sand1 = this.cement1 * 3;
+     this.totalMix = Math.floor(Math.random() * 150) + 10;
 
-    this.timberCost = Math.floor(Math.random() * 400) + 100; 
-    this.screwsCost = Math.floor(Math.random() * 100) + 10; 
-    this.plugsCost = Math.floor(Math.random() * 100) + 10; 
-    this.discount = Math.floor(Math.random() * 35) + 20; 
+     // Gable
+     this.span = Math.floor(Math.random() * 15) + 5;
+     this.rise = Math.round(this.span * 0.4 *10) / 10;
+     this.length = Math.floor(Math.random() * 15) + 5;
 
-    this.joistLength = Math.floor(Math.random() * 15) + 2; 
-    this.numerator = Math.floor(Math.random() * 3) + 1; 
-    this.denominator = Math.floor(Math.random() * 8) + 4; 
-    this.rotAmount = this.numerator + " / " + this.denominator;
-
-    this.radius = Math.floor(Math.random() * 300) + 10; 
-
+     //Tiles & Gutter
+     this.roofWidth = Math.floor(Math.random() * 15) + 5;
+     this.roofHeight = Math.round(this.span * 0.4 *10) / 10;
+     this.tilesPerSqM = Math.floor(Math.random() * 60) + 40;
 
 
   }
@@ -172,56 +198,63 @@ export class RoofingDetailsPage implements OnInit {
 
   ngOnInit(): void {
 
-    
+
 
     // On init, the route subscription is the active subscription
     this.subscriptions = this.route.data
-    .subscribe(
-      (resolvedRouteData: IResolvedRouteData<RoofingDetailsModel>) => {
-        // Route subscription resolved, now the active subscription is the Observable extracted from the resolved route data
-        this.subscriptions = ResolverHelper.extractData<RoofingDetailsModel>(resolvedRouteData.data, RoofingDetailsModel)
-        .subscribe(
-          (state) => {
-            this.details = state;
-          },
-          (error) => {}
-        );
-      },
-      (error) => {}
-    );
+      .subscribe(
+        (resolvedRouteData: IResolvedRouteData<RoofingDetailsModel>) => {
+          // Route subscription resolved, now the active subscription is the Observable extracted from the resolved route data
+          this.subscriptions = ResolverHelper.extractData<RoofingDetailsModel>(resolvedRouteData.data, RoofingDetailsModel)
+            .subscribe(
+              (state) => {
+                this.details = state;
+              },
+              (error) => { }
+            );
+        },
+        (error) => { }
+      );
   }
-  
+
   async presentToastCorrect() {
     const toast = await this.toastController.create({
       header: 'Correct!',
       message: 'Well Done.',
       position: 'bottom',
       buttons: [
-         {
+        {
           text: 'Next',
           role: 'cancel',
           handler: () => {
             this.generateSides();
-            this.side3 = "";
-            this.side4 = "";
-            this.side3a = "";
-            this.side4a = "";
-            this.total = "";
-            this.totala = "";
+            this.totalPay = "";
+            this.discountValue = "";
+            this.finalCost = "";
+            this.totalTiles = "";
+            this.pallettsNeeded = "";
+            this.totalTilesOrdered = "";
+            this.spareTiles = "";
+            this.sparesIncome = "";
+            this.totalTilesCost = "";
+            this.costVAT = "";
+            this.totalCostIncVAT = "";
+            this.sandRequired = "";
+            this.cementRequired = "";
+            this.sandRequired1 = "";
+            this.cementRequired1 = "";
+            this.sandMix = "";
+            this.cementMix = "";
+            this.halfSpan = "";
+            this.riseSquared = "";
+            this.slope = "";
+            this.singleArea = "";
             this.totalArea = "";
-            this.totalTins = "";
-            this.totalXVat = "";
-            this.totalIncVat= "";
-            this.vat = "";
-            this.numberOfBoards = "";
-            this.totalPlasterArea = "";
-            this.totalPlasterAreaDoubled = "";
-            this.totalXDiscount = "";
-            this.discountTotal = "";
-            this.totalCost = "";
-            this.joistReplacement = "";
-            this.diameter = "";
-            this.circumference = "";
+            this.roofArea = "";
+            this.roofTilesNeeded = "";
+            this.breakageAllowance = "";
+            this.totalTilesRoof = "";
+            this.totalGuttering = "";
           }
         }
       ]
@@ -238,205 +271,249 @@ export class RoofingDetailsPage implements OnInit {
     toast.present();
   }
 
-  
+  calculateLabour(): void {
 
-  calculateSimple():void {
+    var pay = Math.round((this.labourCost * this.labourHours) * 100) / 100;
+    console.trace(pay);
 
-    
-
-    if (this.total == this.side1+this.side1+this.side2+this.side2) {
-    console.trace('Correct!');
-
-     this.presentToastCorrect();
-     
-      
-    } else {
-
-      this.presentToastIncorrect();
-    }
-    
-  }
-
-  calculateSimpleArea():void {
-
-    
-
-    if (this.totalArea == this.side1*this.side2) {
-    console.trace('Correct!');
-
-     this.presentToastCorrect();
-     
-      
-    } else {
-
-      this.presentToastIncorrect();
-    }
-    
-  }
-
-  calculateComplexArea():void {
-
-    
-
-    if (this.totalArea == (this.side1a*this.side2a)+(this.side4a*this.side5a)) {
-    console.trace('Correct!');
-
-     this.presentToastCorrect();
-     
-      
-    } else {
-
-      this.presentToastIncorrect();
-    }
-    
-  }
-
-  calculateAdvanced():void {
-
-    
-
-    if (this.totala == this.side1a+this.side1a+this.side6a+this.side6a) {
-    console.trace('Correct!');
-
-     this.presentToastCorrect();
-     
-      
-    } else {
-
-      this.presentToastIncorrect();
-    }
-    
-  }
-
-  calculateSpindles():void {
-
-    
-
-    if (this.spindlesNeeded = this.newelDistance/(this.spindleThickness+100)) {
-    console.trace('Correct!');
-
-     this.presentToastCorrect();
-     
-      
-    } else {
-
-      this.presentToastIncorrect();
-    }
-    
-  }
-
-  calculateSimplePaint():void {
-
-    var tinsRequired = Math.round((this.totalArea / 22) * 10) / 10;
-    console.trace(tinsRequired)
-
-    if (this.totalArea == this.side1*this.side2 && tinsRequired == this.totalTins)  {
+    if (pay == this.totalPay) {
       console.trace('Correct!');
-  
-       this.presentToastCorrect();
-       
-        
-      } else {
-  
-        this.presentToastIncorrect();
-      }
-      
+
+      this.presentToastCorrect();
+
+
+    } else {
+
+      this.presentToastIncorrect();
     }
 
-    calculateSimpleTimber():void {
+  }
 
-      var vatAmount = (this.costTimber + this.costDelivery) * 0.2
-      console.trace(vatAmount)
-  
-      if (this.costTimber+this.costDelivery+ vatAmount == this.totalIncVat)  {
-        console.trace('Correct!');
+  calculateDiscount(): void {
+
+    var discAmount = Math.round(this.orderCost * (this.discount / 100) * 100) / 100;
+    console.trace("OrderCost: £" + this.orderCost + " Discount : £" + discAmount);
+
+    if (discAmount == this.discountValue && this.finalCost == this.orderCost - discAmount) {
+      console.trace('Correct!');
+
+      this.presentToastCorrect();
+
+
+    } else {
+
+      this.presentToastIncorrect();
+    }
+
+  }
+
+  calculateBreakages(): void {
+
+    console.trace(this.numberTiles)
+    console.trace(this.breakage)
+
+    var breakAllowance = Math.ceil(this.numberTiles * (this.breakage / 100));
+    console.trace(breakAllowance);
+
+    if (this.numberTiles + breakAllowance == this.totalTiles) {
+      console.trace('Correct!');
+
+      this.presentToastCorrect();
+
+
+    } else {
+
+      this.presentToastIncorrect();
+    }
+
+  }
+
+  calculatePalletSimple(): void {
+
+    console.trace(this.numberPalletTiles)
+    console.trace(this.numberPerPallet)
+
+    var PalsNeeded = Math.ceil(this.numberPalletTiles / this.numberPerPallet);
+    console.trace(PalsNeeded);
+
+    if (this.pallettsNeeded == PalsNeeded) {
+      console.trace('Correct!');
+
+      this.presentToastCorrect();
+
+
+    } else {
+
+      this.presentToastIncorrect();
+    }
+
+  }
+  calculatePalletAdvanced(): void {
+
+    console.trace(this.numberPalletTiles)
+    console.trace(this.numberPerPallet)
+
+    var PalsNeeded = Math.ceil(this.numberPalletTiles / this.numberPerPallet);
+    console.trace(PalsNeeded);
+
+    var spares = this.numberPerPallet * this.pallettsNeeded - this.numberPalletTiles;
+    console.trace(spares);
+
+    if (this.sparesIncome == spares * this.costPerTile) {
+      console.trace('Correct!');
+
+      this.presentToastCorrect();
+
+
+    } else {
+
+      this.presentToastIncorrect();
+    }
+
+  }
+
+  calculateCost(): void {
+
+    var costXvat = Math.round((this.numberTiles * this.costPerTile + this.deliveryCharge) * 100) / 100;
+    var vat = Math.ceil((costXvat *0.02) *100) / 100;
+    var costWithVAT = Math.ceil((costXvat + vat) * 100) / 100;
+    console.trace(costXvat + " " + vat + " " + costWithVAT)
+
+    if (costWithVAT == this.totalCostIncVAT) {
+      console.trace('Correct!');
+
+      this.presentToastCorrect();
+
+
+    } else {
+
+      this.presentToastIncorrect();
+    }
+
+  }
+
+  calculateSand(): void {
+
+
+
+    if (this.sand == this.sandRequired) {
+      console.trace('Correct!');
+
+      this.presentToastCorrect();
+
+
+    } else {
+
+      this.presentToastIncorrect();
+    }
+
+  }
+  calculateCement(): void {
+
+
+
+    if (this.cement1 == this.cementRequired1) {
+      console.trace('Correct!');
+
+      this.presentToastCorrect();
+
+
+    } else {
+
+      this.presentToastIncorrect();
+    }
+
+  }
+  calculateMix(): void {
+
+    var part = this.totalMix / 4;
+
+
+
+    if (this.cementMix == part && this.sandMix == (part * 3)) {
+      console.trace('Correct!');
+
+      this.presentToastCorrect();
+
+
+    } else {
+
+      this.presentToastIncorrect();
+    }
+
+  }
+
+  calculateGable(): void {
+
+    var halfSpanSq = Math.round((this.span / 2) * (this.span / 2) * 100) / 100 ;
+    var riseSq = Math.round((this.rise * this.rise) * 100)/ 100;
+
+    var slopeRoot = Math.round((Math.sqrt(halfSpanSq + riseSq)) * 100) / 100;
     
-         this.presentToastCorrect();
-         
-          
-        } else {
+    console.trace(halfSpanSq + " " + riseSq + " " + slopeRoot);
+
+    var ssArea = this.length * slopeRoot;
+
+     if (ssArea*2 == this.totalArea) {
+       console.trace('Correct!');
+
+       this.presentToastCorrect();
+
+
+     } else {
+
+       this.presentToastIncorrect();
+    }
+
     
-          this.presentToastIncorrect();
-        }
-        
-      }
 
-      calculatePlasteboard():void {
+  }
 
-        var requiredBoards = Math.round((this.totalPlasterAreaDoubled / 2.88) * 10) / 10;
+  calculateTiles(): void {
+
+    var area = Math.round((this.roofWidth * this.roofHeight) * 100) / 100 ;
+    var required = Math.ceil(area * this.tilesPerSqM);
+    var spareBreak = Math.ceil(required *0.15);
+     console.trace(required + " " + spareBreak);
+    
+
+     if (required + spareBreak == this.totalTilesRoof) {
+       console.trace('Correct!');
+
+       this.presentToastCorrect();
 
 
-        if (this.totalPlasterAreaDoubled  == (this.side2*this.side1)*2 && this.numberOfBoards == requiredBoards )  {
-          console.trace('Correct!');
-      
-           this.presentToastCorrect();
-           
-            
-          } else {
-      
-            this.presentToastIncorrect();
-          }
-          
-        }
+     } else {
 
-        calculateDiscount():void {
+       this.presentToastIncorrect();
+    }
 
-         
-          var subTotal = this.timberCost+this.plugsCost+this.screwsCost;
-          var discAmount = subTotal * (this.discount / 100);
+    
 
-          console.trace("Subtotal = " + subTotal + "Discount = " + discAmount)
+  }
 
-          if (this.totalCost == subTotal - discAmount)  {
-            console.trace('Correct!');
-        
-             this.presentToastCorrect();
-             
-              
-            } else {
-        
-              this.presentToastIncorrect();
-            }
-            
-          }
+  calculateGutter(): void {
 
-          calculateJoist():void {
+    var gutterRequired = this.roofHeight + this.roofHeight + this.roofWidth + this.roofWidth;
+    var hang = Math.round(((this.tilesPerSqM /1000) * 4) * 100 )/ 100;
+    
 
-            var rotLevel = Math.round((this.joistLength * this.numerator / this.denominator) * 10) / 10;
-            console.trace(rotLevel + " & " + this.joistReplacement)
-            
-            if (rotLevel == this.joistReplacement)  {
-              console.trace('Correct!');
-          
-               this.presentToastCorrect();
-               
-                
-              } else {
-          
-                this.presentToastIncorrect();
-              }
-              
-            }
+     if (gutterRequired + hang == this.totalGuttering) {
+       console.trace('Correct!');
 
-            calculateCircumference():void {
+       this.presentToastCorrect();
 
-              var checkDiameter = Math.round((this.radius * 2) * 10) / 10;
-              var pi = Math.round((this.diameter * 3.14159265359) * 10) / 10;
 
-              console.trace(checkDiameter + " & " + this.diameter + " Pi " + pi)
-              
-              if (checkDiameter == this.diameter && this.circumference == pi)  {
-                console.trace('Correct!');
-            
-                 this.presentToastCorrect();
-                 
-                  
-                } else {
-            
-                  this.presentToastIncorrect();
-                }
-                
-              }
+     } else {
+
+       this.presentToastIncorrect();
+    }
+
+    
+
+  }
+
+
 
 
   // NOTE: Ionic only calls ngOnDestroy if the page was popped (ex: when navigating back)

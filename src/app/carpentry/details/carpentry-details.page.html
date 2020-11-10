@@ -16,7 +16,7 @@
         [src]="details?.showcaseImage">
         <app-aspect-ratio [ratio]="{ w: 64, h: 40 }">
           <div class="icon-wrapper">
-            <app-aspect-ratio [ratio]="{ w: 40, h: 20 }">
+            <app-aspect-ratio [ratio]="{ w: 1, h: 1 }">
               <app-image-shell class="icon-image" [src]="details?.icon"></app-image-shell>
             </app-aspect-ratio>
           </div>
@@ -24,7 +24,7 @@
       </app-image-shell>
     </ion-col>
   </ion-row>
-  <ion-row class="description-row">
+  <!-- <ion-row class="description-row">
     <ion-col size="9">
       <h3 class="details-name">
         <app-text-shell [data]="details?.name"></app-text-shell>
@@ -33,7 +33,7 @@
         <app-text-shell [data]="details?.style"></app-text-shell>
       </p>
     </ion-col>
-  </ion-row>
+  </ion-row> -->
 
 
  
@@ -70,22 +70,27 @@
                     <ion-item class="ion-padding">
                       <ion-label>Side 1:</ion-label>
                       <p [innerHTML]="side1" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Side 2:</ion-label>
                       <p [innerHTML]="side2" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item type="submit" class="ion-padding">
                       <ion-label>Side 3:</ion-label>
                       <ion-input name="side3" [(ngModel)]="side3" maxlength="4"></ion-input>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Side 4:</ion-label>
                       <ion-input name="side4" [(ngModel)]="side4" maxlength="4"></ion-input>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Total:</ion-label>
                       <ion-input clear-input name="total" [(ngModel)]="total"></ion-input>
+                      <p style="margin-left: 5px;">m2</p>
                     </ion-item>
                   </ion-list>
                   <div class="ion-padding">
@@ -128,30 +133,37 @@
                     <ion-item class="ion-padding">
                       <ion-label>Side 1:</ion-label>
                       <p [innerHTML]="side1a" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Side 2:</ion-label>
                       <p [innerHTML]="side2a" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item type="submit" class="ion-padding">
                       <ion-label>Side 3:</ion-label>
                       <ion-input name="side3a" [(ngModel)]="side3a" maxlength="4"></ion-input>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Side 4:</ion-label>
                       <ion-input name="side4a" [(ngModel)]="side4a" maxlength="4"></ion-input>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Side 5:</ion-label>
                       <p [innerHTML]="side5a" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Side 6:</ion-label>
                       <p [innerHTML]="side6a" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Total:</ion-label>
                       <ion-input clear-input name="totala" [(ngModel)]="total"></ion-input>
+                      <p style="margin-left: 5px;">m2</p>
                     </ion-item>
                   </ion-list>
                   <div class="ion-padding">
@@ -199,14 +211,17 @@
                     <ion-item class="ion-padding">
                       <ion-label>Side 1:</ion-label>
                       <p [innerHTML]="side1" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Side 2:</ion-label>
                       <p [innerHTML]="side2" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Total:</ion-label>
                       <ion-input clear-input name="totalArea" [(ngModel)]="totalArea"></ion-input>
+                      <p style="margin-left: 5px;">m2</p>
                     </ion-item>
                   </ion-list>
                   <div class="ion-padding">
@@ -249,30 +264,37 @@
                     <ion-item class="ion-padding">
                       <ion-label>Side 1:</ion-label>
                       <p [innerHTML]="side1a" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Side 2:</ion-label>
                       <p [innerHTML]="side2a" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item type="submit" class="ion-padding">
                       <ion-label>Side 3:</ion-label>
                       <ion-input name="side3a" [(ngModel)]="side3a" maxlength="4"></ion-input>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Side 4:</ion-label>
                       <ion-input name="side4a" [(ngModel)]="side4a" maxlength="4"></ion-input>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Side 5:</ion-label>
                       <p [innerHTML]="side5a" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Side 6:</ion-label>
                       <p [innerHTML]="side6a" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Total:</ion-label>
                       <ion-input clear-input name="totalArea" [(ngModel)]="totalArea"></ion-input>
+                      <p style="margin-left: 5px;">m2</p>
                     </ion-item>
                   </ion-list>
                   <div class="ion-padding">
@@ -320,18 +342,22 @@
                     <ion-item class="ion-padding">
                       <ion-label>Thickness of Spindles: </ion-label>
                       <p [innerHTML]="spindleThickness" type="number"></p>
+                      <p style="margin-left: 5px;">mm</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Distance between newel posts: </ion-label>
                       <p [innerHTML]="newelDistance" type="number"></p>
+                      <p style="margin-left: 5px;">mm</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Spindles needed: </ion-label>
                       <ion-input clear-input name="spindlesNeeded" [(ngModel)]="spindlesNeeded"></ion-input>
+                      <p style="margin-left: 5px;">spindles</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Space between: </ion-label>
                       <ion-input clear-input name="spindleSpace" [(ngModel)]="spindleSpace"></ion-input>
+                      <p style="margin-left: 5px;">mm</p>
                     </ion-item>
                   </ion-list>
                   <div class="ion-padding">
@@ -377,18 +403,22 @@
                     <ion-item class="ion-padding">
                       <ion-label>Side 1:</ion-label>
                       <p [innerHTML]="side1" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Side 2:</ion-label>
                       <p [innerHTML]="side2" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Total Area:</ion-label>
                       <ion-input clear-input name="totalArea" [(ngModel)]="totalArea"></ion-input>
+                      <p style="margin-left: 5px;">m2</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Number of Tins:</ion-label>
                       <ion-input clear-input name="totalTins" [(ngModel)]="totalTins"></ion-input>
+                      <p style="margin-left: 5px;">tins</p>
                     </ion-item>
                   </ion-list>
                   <div class="ion-padding">
@@ -496,26 +526,32 @@
                     <ion-item class="ion-padding">
                       <ion-label>Side 1:</ion-label>
                       <p [innerHTML]="side1" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Side 2:</ion-label>
                       <p [innerHTML]="side2" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item type="submit" class="ion-padding">
                       <ion-label>Total Area:</ion-label>
                       <ion-input name="totalPlasterArea" [(ngModel)]="totalPlasterArea" maxlength="5"></ion-input>
+                      <p style="margin-left: 5px;">m2</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Multiplied by 2:</ion-label>
                       <ion-input name="totalPlasterAreaDoubled" [(ngModel)]="totalPlasterAreaDoubled" maxlength="4"></ion-input>
+                      <p style="margin-left: 5px;">m2</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Area per plasterboard:</ion-label>
                       <p [innerHTML]="plasterCoverage" type="number"></p>
+                      <p style="margin-left: 5px;">m2</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Number Required:</ion-label>
                       <ion-input name="numberOfBoards" [(ngModel)]="numberOfBoards" maxlength="5"></ion-input>
+                      <p style="margin-left: 5px;">boards</p>
                     </ion-item>
                   </ion-list>
                   <div class="ion-padding">
@@ -575,15 +611,15 @@
                       <p [innerHTML]="discount" type="number"></p>
                     </ion-item>
                     <ion-item class="ion-padding">
-                      <ion-label>Total before Discount :</ion-label>
+                      <ion-label>Total before Discount : £</ion-label>
                       <ion-input name="totalXDiscount" [(ngModel)]="totalXDiscount" maxlength="6"></ion-input>
                     </ion-item>
                     <ion-item class="ion-padding">
-                      <ion-label>Discount Total:</ion-label>
+                      <ion-label>Discount Total : £</ion-label>
                       <ion-input name="discountTotal" [(ngModel)]="discountTotal" maxlength="6"></ion-input>
                     </ion-item>
                     <ion-item class="ion-padding">
-                      <ion-label>Final Price:</ion-label>
+                      <ion-label>Final Price : £</ion-label>
                       <ion-input name="totalCost" [(ngModel)]="totalCost" maxlength="6"></ion-input>
                     </ion-item>
 
@@ -632,6 +668,7 @@
                     <ion-item class="ion-padding">
                       <ion-label>Joint Measurement : </ion-label>
                       <p [innerHTML]="joistLength" type="number"></p>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Amount of Rot : </ion-label>
@@ -640,6 +677,7 @@
                     <ion-item class="ion-padding">
                       <ion-label>Amount to Replace :</ion-label>
                       <ion-input name="joistReplacement" [(ngModel)]="joistReplacement" maxlength="6"></ion-input>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
 
                    
@@ -687,16 +725,19 @@
                     <ion-item class="ion-padding">
                       <ion-label>Radius : </ion-label>
                       <p [innerHTML]="radius" type="number"></p>
+                      <p style="margin-left: 5px;">mm</p>
                     </ion-item>
                    
                     <ion-item class="ion-padding">
                       <ion-label>Diameter : </ion-label>
                       <ion-input name="diameter" [(ngModel)]="diameter" maxlength="6"></ion-input>
+                      <p style="margin-left: 5px;">mm</p>
                     </ion-item>
 
                     <ion-item class="ion-padding">
                       <ion-label>Circumference : </ion-label>
                       <ion-input name="circumference" [(ngModel)]="circumference" maxlength="7"></ion-input>
+                      <p style="margin-left: 5px;">mm</p>
                     </ion-item>
 
                    

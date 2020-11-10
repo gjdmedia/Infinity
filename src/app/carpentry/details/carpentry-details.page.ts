@@ -1,5 +1,5 @@
 import { Component, OnInit,AfterViewInit, ViewChild, HostBinding } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ToastController } from '@ionic/angular';
 import { IResolvedRouteData, ResolverHelper } from '../../utils/resolver-helper';
@@ -7,6 +7,7 @@ import { CarpentryDetailsModel } from './carpentry-details.model';
 import { IonSlides, MenuController } from '@ionic/angular';
 import { analytics } from 'firebase';
 import { compileDirectiveFromRender2 } from '@angular/compiler/src/render3/view/compiler';
+
 
 
 @Component({
@@ -86,7 +87,7 @@ export class CarpentryDetailsPage implements OnInit {
 
   
 
-  constructor(public menu: MenuController, private route: ActivatedRoute, public toastController: ToastController) { 
+  constructor(public menu: MenuController, private route: ActivatedRoute, public toastController: ToastController,  private router: Router,) { 
 
     this.generateSides();
 
@@ -138,10 +139,10 @@ export class CarpentryDetailsPage implements OnInit {
     this.side2a = this.side1a * 0.384615385;
     this.side2a = Math.round(this.side2a * 10) / 10;
 
-    this.side5a = this.side1 * 0.57;
+    this.side5a = this.side1a * 0.57;
     this.side5a = Math.round(this.side5a * 10) / 10;
 
-    this.side6a = this.side1 * 0.615;
+    this.side6a = this.side1a * 0.615;
     this.side6a = Math.round(this.side6a * 10) / 10;
 
     this.spindleThickness = Math.floor(Math.random() * 35) + 30; 
@@ -230,6 +231,31 @@ export class CarpentryDetailsPage implements OnInit {
   }
 
   async presentToastIncorrect() {
+    const toast = await this.toastController.create({
+      header: 'Sorry that is incorrect, retry or watch a video?',
+      // message: 'Try again',
+      position: 'bottom', 
+      buttons: [
+         {
+          text: 'Retry',
+          role: 'cancel',
+          handler: () => {
+            console.trace('Retry');
+          }
+        },{
+          text: 'Video',
+          role: 'submit',
+          handler: () => {
+            console.trace('Video');
+            this.router.navigate(['video-playlist'], { replaceUrl: true });
+          },
+        }
+      ]
+    });
+    toast.present();
+  }
+
+  async presentToastIncorrect7() {
     const toast = await this.toastController.create({
       message: 'Try again!',
       position: 'bottom',
@@ -384,8 +410,9 @@ export class CarpentryDetailsPage implements OnInit {
          
           var subTotal = this.timberCost+this.plugsCost+this.screwsCost;
           var discAmount = subTotal * (this.discount / 100);
+          discAmount = Math.ceil(discAmount * 100) / 100;
 
-          console.trace("Subtotal = " + subTotal + "Discount = " + discAmount)
+          console.trace("Subtotal = " + subTotal + "Discount = " + discAmount + " Answer : " + (subTotal - discAmount))
 
           if (this.totalCost == subTotal - discAmount)  {
             console.trace('Correct!');

@@ -1,4 +1,4 @@
-import { Component, OnInit,AfterViewInit, ViewChild, HostBinding } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, HostBinding } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ToastController } from '@ionic/angular';
@@ -16,7 +16,7 @@ import { compileDirectiveFromRender2 } from '@angular/compiler/src/render3/view/
     './styles/brick-details.page.scss',
     './styles/brick-details.shell.scss'
   ]
-  
+
 })
 export class BrickDetailsPage implements OnInit {
   // Gather all component subscription in one place. Can be one Subscription or multiple (chained using the Subscription.add() method)
@@ -26,7 +26,7 @@ export class BrickDetailsPage implements OnInit {
     }
   };
 
-  
+
   subscriptions: Subscription;
   side1: any;
   side2: any;
@@ -34,43 +34,70 @@ export class BrickDetailsPage implements OnInit {
   side4: any;
   side1a: any;
   side2a: any;
-  side3a: any;
-  side4a: any;
-  side5a: any;
-  side6a: any;
-  spindleThickness: any;
-  spindlesNeeded: any;
-  spindleSpace: any;
-  newelDistance: any;
-  joistLength: any;
-  rotAmount: any;
-  joistReplacement: any;
-  total: any;
-  totala: any;
+  doorWidth: any;
+  doorHeight: any;
+  wallArea: any;
+  doorArea: any;
   totalArea: any;
-  totalTins: any;
-  costTimber: any;
-  costDelivery: any;
-  totalXVat: any;
-  vat: any;
-  totalIncVat: any;
-  totalPlasterArea: any;
-  totalPlasterAreaDoubled: any;
-  plasterCoverage: any;
-  numberOfBoards: any;
-  timberCost: any;
-  screwsCost: any;
-  plugsCost: any;
+  subtractDoorArea: any;
+  brickWallArea: any;
+  brickCoverage: any;
+  totalBricks: any;
+  bricksRequired: any;
+  costPerBrick: any;
+  totalCostBrick: any;
+  //Gable
+  side1Tri: any;
+  side2Tri: any;
+  totalTri: any;
+
+  //Wall Tiles
+  noTiles: any;
+  tilesPerPack: any;
+  pricePack: any;
+  numberPacks: any;
+  totalCostTiles: any;
+  vatTiles: any;
+  totalCostTilesVAT: any;
+
+  // Cement
+
+  cement: any;
+  cementRequired: any;
+  sand: any;
+  sandRequired: any;
+  cement1: any;
+  cementRequired1: any;
+  sand1: any;
+  sandRequired1: any;
+  totalMix: any;
+  sandMix: any;
+  cementMix: any;
+
+  //Raft
+  raftWidth: any;
+  raftHeight: any;
+  raftDepth: any;
+  convertedDepth: any;
+  requiredConcrete: any;  // Discount
+  brushesCost: any;
+  rollersCost: any;
+  maskingCost: any;
+  caulkCost: any;
+  dropCost: any;
   discount: any;
   totalXDiscount: any;
   discountTotal: any;
   totalCost: any;
-  numerator: any;
-  denominator: any;
-  radius: any;
-  diameter: any;
-  circumference: any;
 
+  //Build
+  brickArea: any;
+  bricksDay: any;
+  bricksSquareM: any;
+  paymentBricks: any;
+  bricksToLay: any;
+  numberDays: any;
+  totalCostBricks: any;
 
   details: BrickDetailsModel;
 
@@ -84,87 +111,109 @@ export class BrickDetailsPage implements OnInit {
     return (this.details && this.details.isShell) ? true : false;
   }
 
-  
 
-  constructor(public menu: MenuController, private route: ActivatedRoute, public toastController: ToastController) { 
+
+  constructor(public menu: MenuController, private route: ActivatedRoute, public toastController: ToastController) {
 
     this.generateSides();
 
   }
 
-    // Disable side menu for this page
-    ionViewDidEnter(): void {
-      this.menu.enable(true);
-    }
-  
-    // Restore to default when leaving this page
-    ionViewDidLeave(): void {
-      this.menu.enable(true);
-    }
+  // Disable side menu for this page
+  ionViewDidEnter(): void {
+    this.menu.enable(true);
+  }
 
-    ngAfterViewInit(): void {
-      // ViewChild is set
+  // Restore to default when leaving this page
+  ionViewDidLeave(): void {
+    this.menu.enable(true);
+  }
+
+  ngAfterViewInit(): void {
+    // ViewChild is set
+    this.slides.isBeginning().then(isBeginning => {
+      this.isFirstSlide = isBeginning;
+    });
+    this.slides.isEnd().then(isEnd => {
+      this.isLastSlide = isEnd;
+    });
+
+    // Subscribe to changes
+    this.slides.ionSlideWillChange.subscribe(changes => {
       this.slides.isBeginning().then(isBeginning => {
         this.isFirstSlide = isBeginning;
       });
       this.slides.isEnd().then(isEnd => {
         this.isLastSlide = isEnd;
       });
-  
-      // Subscribe to changes
-      this.slides.ionSlideWillChange.subscribe(changes => {
-        this.slides.isBeginning().then(isBeginning => {
-          this.isFirstSlide = isBeginning;
-        });
-        this.slides.isEnd().then(isEnd => {
-          this.isLastSlide = isEnd;
-        });
-      });
-    }
-  
-    skipWalkthrough(): void {
-      // Skip to the last slide
-      this.slides.length().then(length => {
-        this.slides.slideTo(length);
-      });
-    }
+    });
+  }
 
-  generateSides():void {
-    this.side1 = Math.floor(Math.random() * 30) + 5; 
-    this.side2 = this.side1 /2;
-    console.trace('Random: ', this.side1)
+  skipWalkthrough(): void {
+    // Skip to the last slide
+    this.slides.length().then(length => {
+      this.slides.slideTo(length);
+    });
+  }
 
-    this.side1a = Math.floor(Math.random() * 30) + 5; 
+  generateSides(): void {
+
+    //Wall
+    this.side1 = Math.floor(Math.random() * 30) + 5;
+    this.side2 = this.side1 / 2;
+    console.trace('Random: ', this.side1);
+    this.side1a = Math.floor(Math.random() * 30) + 5;
     this.side2a = this.side1a * 0.384615385;
     this.side2a = Math.round(this.side2a * 10) / 10;
+    this.doorHeight = this.side2 * 0.57;
+    this.doorHeight = Math.round(this.doorHeight * 10) / 10;
+    this.doorWidth = this.doorHeight * 0.615;
+    this.doorWidth = Math.round(this.doorWidth * 10) / 10;
 
-    this.side5a = this.side1 * 0.57;
-    this.side5a = Math.round(this.side5a * 10) / 10;
+    // Bricks
+    this.brickWallArea = Math.floor(Math.random() * 150) + 100;
+    this.brickCoverage = Math.floor(Math.random() * 40) + 10;
 
-    this.side6a = this.side1 * 0.615;
-    this.side6a = Math.round(this.side6a * 10) / 10;
+    //Cost
+    this.bricksRequired = Math.floor(Math.random() * 3500) + 1000;
+    var precision = 100; // 2 decimals
+    this.costPerBrick = Math.floor(Math.random() * (0.5 * precision - 1 * precision) + 1 * precision) / (1 * precision);
 
-    this.spindleThickness = Math.floor(Math.random() * 35) + 30; 
-    this.newelDistance = Math.floor(Math.random() * 4000) + 3000; 
+    //Gable
+    this.side2Tri = Math.floor(Math.random() * 30) + 5;
+    this.side1Tri = this.side2Tri * 0.7;
+    this.side1Tri = Math.round(this.side1Tri);
 
-    this.costTimber = Math.floor(Math.random() * 500) + 30; 
-    this.costDelivery = Math.floor(Math.random() * 20) + 5; 
+    //Wall Tiles
+    this.noTiles = Math.floor(Math.random() * 350) + 100;
+    this.tilesPerPack = Math.floor(Math.random() * 20) + 10;
+    this.pricePack = Math.floor(Math.random() * (25.99 * precision - 1.00 * precision) + 1 * precision) / (1 * precision);
 
-    this.plasterCoverage = 2.88;
+    //Cement
+    this.cement = Math.floor(Math.random() * 100) + 10;
+    this.sand = this.cement * 5;
+    this.cement1 = Math.floor(Math.random() * 100) + 10;
+    this.sand1 = this.cement1 * 5;
+    this.totalMix = Math.floor(Math.random() * 150) + 10;
 
-    this.timberCost = Math.floor(Math.random() * 400) + 100; 
-    this.screwsCost = Math.floor(Math.random() * 100) + 10; 
-    this.plugsCost = Math.floor(Math.random() * 100) + 10; 
-    this.discount = Math.floor(Math.random() * 35) + 20; 
+    //Raft
+    this.raftDepth = Math.floor(Math.random() * 300) + 100;;
+    this.raftHeight = Math.floor(Math.random() * 40) + 10;
+    this.raftWidth = Math.round(this.raftHeight * 0.7);
 
-    this.joistLength = Math.floor(Math.random() * 15) + 2; 
-    this.numerator = Math.floor(Math.random() * 3) + 1; 
-    this.denominator = Math.floor(Math.random() * 8) + 4; 
-    this.rotAmount = this.numerator + " / " + this.denominator;
+    // Discount
+    this.brushesCost = Math.floor(Math.random() * 20) + 10;
+    this.maskingCost = Math.floor(Math.random() * 10) + 1;
+    this.rollersCost = Math.floor(Math.random() * 20) + 1;
+    this.caulkCost = Math.floor(Math.random() * 15) + 2;
+    this.dropCost = Math.floor(Math.random() * 100) + 10;
+    this.discount = Math.floor(Math.random() * 20) + 5;
 
-    this.radius = Math.floor(Math.random() * 300) + 10; 
-
-
+    // Build
+    this.brickArea = Math.floor(Math.random() * 150) + 50;
+    this.bricksDay = Math.floor(Math.random() * 400) + 200;
+    this.bricksSquareM = 60;
+    this.paymentBricks = Math.floor(Math.random() * 600) + 500;
 
   }
 
@@ -172,56 +221,59 @@ export class BrickDetailsPage implements OnInit {
 
   ngOnInit(): void {
 
-    
+
 
     // On init, the route subscription is the active subscription
     this.subscriptions = this.route.data
-    .subscribe(
-      (resolvedRouteData: IResolvedRouteData<BrickDetailsModel>) => {
-        // Route subscription resolved, now the active subscription is the Observable extracted from the resolved route data
-        this.subscriptions = ResolverHelper.extractData<BrickDetailsModel>(resolvedRouteData.data, BrickDetailsModel)
-        .subscribe(
-          (state) => {
-            this.details = state;
-          },
-          (error) => {}
-        );
-      },
-      (error) => {}
-    );
+      .subscribe(
+        (resolvedRouteData: IResolvedRouteData<BrickDetailsModel>) => {
+          // Route subscription resolved, now the active subscription is the Observable extracted from the resolved route data
+          this.subscriptions = ResolverHelper.extractData<BrickDetailsModel>(resolvedRouteData.data, BrickDetailsModel)
+            .subscribe(
+              (state) => {
+                this.details = state
+              },
+              (error) => { }
+            );
+        },
+        (error) => { }
+      );
   }
-  
+
   async presentToastCorrect() {
     const toast = await this.toastController.create({
       header: 'Correct!',
       message: 'Well Done.',
       position: 'bottom',
       buttons: [
-         {
+        {
           text: 'Next',
           role: 'cancel',
           handler: () => {
             this.generateSides();
             this.side3 = "";
             this.side4 = "";
-            this.side3a = "";
-            this.side4a = "";
-            this.total = "";
-            this.totala = "";
             this.totalArea = "";
-            this.totalTins = "";
-            this.totalXVat = "";
-            this.totalIncVat= "";
-            this.vat = "";
-            this.numberOfBoards = "";
-            this.totalPlasterArea = "";
-            this.totalPlasterAreaDoubled = "";
-            this.totalXDiscount = "";
-            this.discountTotal = "";
-            this.totalCost = "";
-            this.joistReplacement = "";
-            this.diameter = "";
-            this.circumference = "";
+            this.wallArea = "";
+            this.doorArea = "";
+            this.subtractDoorArea = "";
+            this.totalBricks = "";
+            this.totalTri = "";
+            this.numberPacks = "";
+            this.totalCostTiles = "";
+            this.totalCostTilesVAT = "";
+            this.vatTiles = "";
+            this.sandRequired = "";
+            this.cementRequired = "";
+            this.sandRequired1 = "";
+            this.cementRequired1 = "";
+            this.sandMix = "";
+            this.cementMix = "";
+            this.convertedDepth = "";
+            this.requiredConcrete = "";
+            this.bricksToLay = "";
+            this.numberDays = "";
+            this.totalCostBricks = "";
           }
         }
       ]
@@ -238,205 +290,252 @@ export class BrickDetailsPage implements OnInit {
     toast.present();
   }
 
-  
+  //Wall
 
-  calculateSimple():void {
+  calculateSimpleArea(): void {
 
-    
 
-    if (this.total == this.side1+this.side1+this.side2+this.side2) {
-    console.trace('Correct!');
 
-     this.presentToastCorrect();
-     
-      
-    } else {
-
-      this.presentToastIncorrect();
-    }
-    
-  }
-
-  calculateSimpleArea():void {
-
-    
-
-    if (this.totalArea == this.side1*this.side2) {
-    console.trace('Correct!');
-
-     this.presentToastCorrect();
-     
-      
-    } else {
-
-      this.presentToastIncorrect();
-    }
-    
-  }
-
-  calculateComplexArea():void {
-
-    
-
-    if (this.totalArea == (this.side1a*this.side2a)+(this.side4a*this.side5a)) {
-    console.trace('Correct!');
-
-     this.presentToastCorrect();
-     
-      
-    } else {
-
-      this.presentToastIncorrect();
-    }
-    
-  }
-
-  calculateAdvanced():void {
-
-    
-
-    if (this.totala == this.side1a+this.side1a+this.side6a+this.side6a) {
-    console.trace('Correct!');
-
-     this.presentToastCorrect();
-     
-      
-    } else {
-
-      this.presentToastIncorrect();
-    }
-    
-  }
-
-  calculateSpindles():void {
-
-    
-
-    if (this.spindlesNeeded = this.newelDistance/(this.spindleThickness+100)) {
-    console.trace('Correct!');
-
-     this.presentToastCorrect();
-     
-      
-    } else {
-
-      this.presentToastIncorrect();
-    }
-    
-  }
-
-  calculateSimplePaint():void {
-
-    var tinsRequired = Math.round((this.totalArea / 22) * 10) / 10;
-    console.trace(tinsRequired)
-
-    if (this.totalArea == this.side1*this.side2 && tinsRequired == this.totalTins)  {
+    if (this.totalArea == this.side1 * this.side2) {
       console.trace('Correct!');
-  
-       this.presentToastCorrect();
-       
-        
-      } else {
-  
-        this.presentToastIncorrect();
-      }
-      
+
+      this.presentToastCorrect();
+
+
+    } else {
+
+      this.presentToastIncorrect();
     }
 
-    calculateSimpleTimber():void {
+  }
 
-      var vatAmount = (this.costTimber + this.costDelivery) * 0.2
-      console.trace(vatAmount)
-  
-      if (this.costTimber+this.costDelivery+ vatAmount == this.totalIncVat)  {
-        console.trace('Correct!');
-    
-         this.presentToastCorrect();
-         
-          
-        } else {
-    
-          this.presentToastIncorrect();
-        }
-        
-      }
+  calculateDoorRemoved(): void {
 
-      calculatePlasteboard():void {
-
-        var requiredBoards = Math.round((this.totalPlasterAreaDoubled / 2.88) * 10) / 10;
+    var wall = this.side1a * this.side2a;
+    var door = this.doorWidth * this.doorHeight;
 
 
-        if (this.totalPlasterAreaDoubled  == (this.side2*this.side1)*2 && this.numberOfBoards == requiredBoards )  {
-          console.trace('Correct!');
-      
-           this.presentToastCorrect();
-           
-            
-          } else {
-      
-            this.presentToastIncorrect();
-          }
-          
-        }
+    console.trace('Wall Area: ' + wall + 'Door Area :' + door)
 
-        calculateDiscount():void {
+    if (this.subtractDoorArea == wall - door) {
+      console.trace('Correct!');
 
-         
-          var subTotal = this.timberCost+this.plugsCost+this.screwsCost;
-          var discAmount = subTotal * (this.discount / 100);
+      this.presentToastCorrect();
 
-          console.trace("Subtotal = " + subTotal + "Discount = " + discAmount)
 
-          if (this.totalCost == subTotal - discAmount)  {
-            console.trace('Correct!');
-        
-             this.presentToastCorrect();
-             
-              
-            } else {
-        
-              this.presentToastIncorrect();
-            }
-            
-          }
+    } else {
 
-          calculateJoist():void {
+      this.presentToastIncorrect();
+    }
 
-            var rotLevel = Math.round((this.joistLength * this.numerator / this.denominator) * 10) / 10;
-            console.trace(rotLevel + " & " + this.joistReplacement)
-            
-            if (rotLevel == this.joistReplacement)  {
-              console.trace('Correct!');
-          
-               this.presentToastCorrect();
-               
-                
-              } else {
-          
-                this.presentToastIncorrect();
-              }
-              
-            }
+  }
 
-            calculateCircumference():void {
+  calculateBricks(): void {
 
-              var checkDiameter = Math.round((this.radius * 2) * 10) / 10;
-              var pi = Math.round((this.diameter * 3.14159265359) * 10) / 10;
+    var wall = this.brickWallArea * this.brickCoverage;
+    wall = Math.round(wall * 10) / 10;
 
-              console.trace(checkDiameter + " & " + this.diameter + " Pi " + pi)
-              
-              if (checkDiameter == this.diameter && this.circumference == pi)  {
-                console.trace('Correct!');
-            
-                 this.presentToastCorrect();
-                 
-                  
-                } else {
-            
-                  this.presentToastIncorrect();
-                }
-                
-              }
+    if (this.totalBricks == wall) {
+      console.trace('Correct!');
+
+      this.presentToastCorrect();
+
+
+    } else {
+
+      this.presentToastIncorrect();
+    }
+
+  }
+
+  calculateSimpleCost(): void {
+
+    var cost = this.bricksRequired * this.costPerBrick;
+    cost = Math.round(cost * 100) / 100;
+
+    if (this.totalCostBrick == cost) {
+      console.trace('Correct!');
+
+      this.presentToastCorrect();
+
+
+    } else {
+
+      this.presentToastIncorrect();
+    }
+
+  }
+
+  calculateSimpleTri(): void {
+
+    if (this.totalTri == (this.side2Tri / 2) * this.side1Tri) {
+      console.trace('Correct!');
+
+      this.presentToastCorrect();
+
+
+    } else {
+
+      this.presentToastIncorrect();
+    }
+
+  }
+
+  calculateTiles(): void {
+
+    var packs = Math.ceil(this.noTiles / this.tilesPerPack)
+
+
+    if (this.totalCostTiles == this.pricePack * packs && packs == this.numberPacks) {
+      console.trace('Correct!');
+
+      this.presentToastCorrect();
+
+
+    } else {
+
+      this.presentToastIncorrect();
+    }
+
+  }
+  calculateTilesVAT(): void {
+
+    var packs = Math.ceil(this.noTiles / this.tilesPerPack)
+    var cost = Math.round((packs * this.pricePack) * 100) / 100;
+    var VAT = Math.round((cost * 0.2) * 100) / 100;
+    var totalIncVat = cost + VAT;
+    totalIncVat = Math.round(totalIncVat * 100) / 100;
+    console.trace('Packs: ' + packs + ' xVat :' + cost + ' VAT ' + VAT + ' Total: ' + totalIncVat);
+
+
+    if (this.totalCostTilesVAT == totalIncVat) {
+      console.trace('Correct!');
+
+      this.presentToastCorrect();
+
+
+    } else {
+
+      this.presentToastIncorrect();
+    }
+
+  }
+
+
+  calculateSand(): void {
+
+
+
+    if (this.sand == this.sandRequired) {
+      console.trace('Correct!');
+
+      this.presentToastCorrect();
+
+
+    } else {
+
+      this.presentToastIncorrect();
+    }
+
+  }
+  calculateCement(): void {
+
+
+
+    if (this.cement1 == this.cementRequired1) {
+      console.trace('Correct!');
+
+      this.presentToastCorrect();
+
+
+    } else {
+
+      this.presentToastIncorrect();
+    }
+
+  }
+  calculateMix(): void {
+
+    var part = this.totalMix / 6;
+
+
+
+    if (this.cementMix == part && this.sandMix == (part * 5)) {
+      console.trace('Correct!');
+
+      this.presentToastCorrect();
+
+
+    } else {
+
+      this.presentToastIncorrect();
+    }
+
+  }
+
+  calculateRaft(): void {
+
+    var conversion = this.raftDepth / 1000;
+    var concrete = this.raftDepth * this.raftHeight * this.raftWidth / 1000;
+
+    console.trace(concrete);
+
+    if (this.convertedDepth == conversion && this.requiredConcrete == concrete) {
+      console.trace('Correct!');
+
+      this.presentToastCorrect();
+
+
+    } else {
+
+      this.presentToastIncorrect();
+    }
+
+  }
+
+  calculateDiscount(): void {
+
+
+    var subTotal = this.brushesCost + this.rollersCost + this.maskingCost + this.caulkCost + this.dropCost;
+    var discAmount = Math.round(subTotal * (this.discount / 100) * 100) / 100;
+
+
+    console.trace("Subtotal = " + subTotal + "Discount = " + discAmount)
+
+    if (this.totalCost == subTotal - discAmount) {
+      console.trace('Correct!');
+
+      this.presentToastCorrect();
+
+
+    } else {
+
+      this.presentToastIncorrect();
+    }
+
+  }
+
+  calculateBuild(): void {
+
+
+    var bricksToBeLayed = this.brickArea * this.bricksSquareM;
+    var daysNeeded = Math.ceil(bricksToBeLayed / this.bricksDay);
+    var moneyEarned = bricksToBeLayed/1000 * this.paymentBricks;
+    moneyEarned = Math.ceil(moneyEarned * 100) / 100;
+    console.trace("Bricks to Lay = " + bricksToBeLayed + "Days = " + daysNeeded + "Money = " + moneyEarned)
+
+    if (this.bricksToLay == bricksToBeLayed && this.numberDays == daysNeeded && this.totalCostBricks == moneyEarned) {
+      console.trace('Correct!');
+
+      this.presentToastCorrect();
+
+
+    } else {
+
+      this.presentToastIncorrect();
+    }
+
+  }
 
 
   // NOTE: Ionic only calls ngOnDestroy if the page was popped (ex: when navigating back)
