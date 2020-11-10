@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:813357714189:android:1a663d637d4c6bc4813e44",
         "android_client_info": {
-          "package_name": "com.ionicthemes.ionic5fullapp"
+          "package_name": "ac.southdevon.InfinityG"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "813357714189-u13i5ius248luvscntoo741spbhp91dk.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.ionicthemes.ionic5fullapp",
+            "package_name": "ac.southdevon.InfinityG",
             "certificate_hash": "b79fc3e78ed50b0aa5686c1e5a498c46ee1c8da7"
           }
         },

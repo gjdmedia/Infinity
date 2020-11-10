@@ -1,6 +1,6 @@
 {
-  "appId": "com.ionicthemes.ionic5fullapp",
-  "appName": "Ionic5FullApp",
+  "appId": "ac.southdevon.InfinityG",
+  "appName": "InfinityG",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

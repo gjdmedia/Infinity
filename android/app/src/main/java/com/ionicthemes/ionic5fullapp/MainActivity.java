@@ -1,4 +1,4 @@
-package com.ionicthemes.ionic5fullapp;
+package ac.southdevon.InfinityG;
 
 import android.os.Bundle;
 
