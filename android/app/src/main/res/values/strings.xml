@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">InfinityG</string>
-    <string name="title_activity_main">InfinityG</string>
-    <string name="package_name">ac.southdevon.InfinityG</string>
-    <string name="custom_url_scheme">ac.southdevon.InfinityG</string>
-</resources>

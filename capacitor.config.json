@@ -1,6 +1,6 @@
 {
   "appId": "ac.southdevon.InfinityG",
-  "appName": "InfinityG",
+  "appName": "Infinity Generator",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
