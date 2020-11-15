@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>946195882953-6t2b2p5851fq80g8404hsiqej8md9bsg.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.946195882953-6t2b2p5851fq80g8404hsiqej8md9bsg</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCe5O-LKzifrEcFw0n7s78C6cPa8UZM-bA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>946195882953</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>ac.southdevon.InfinityG</string>
+	<key>PROJECT_ID</key>
+	<string>infinity-generator-9dd24</string>
+	<key>STORAGE_BUCKET</key>
+	<string>infinity-generator-9dd24.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:946195882953:ios:d017ef0b72a792d08afe18</string>
+	<key>DATABASE_URL</key>
+	<string>https://infinity-generator-9dd24.firebaseio.com</string>
+</dict>
+</plist>
