@@ -183,7 +183,7 @@ export class PaintingDetailsPage implements OnInit {
     this.side1Tri = this.side2Tri /2;
 
     //Wall Area
-    this.wallWidth = Math.floor(Math.random() * 30) + 5; 
+    this.wallWidth = Math.floor(Math.random() * 6) + 6; 
     this.wallDepth = this.wallWidth*0.65;
     this.wallDepth = Math.round(this.wallDepth * 10) / 10;
     this.wallHeight = 2.5;

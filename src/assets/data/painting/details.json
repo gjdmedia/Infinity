@@ -30,7 +30,7 @@
       "icon": "./assets/images/017-brush.png",
       "showcaseImage": "./assets/images/triangle.jpg",
       "name": "Triangle",
-      "style": "Calculate the area of this area under some stairs"
+      "style": "Calculate the area of this area under stairs"
     },
     {
       "id": 5,
@@ -47,7 +47,7 @@
       "icon": "./assets/images/017-brush.png",
       "showcaseImage": "./assets/images/wallarea.jpg",
       "name": "Wall Area",
-      "style": "Calculate the total wall area of a room that measures:"
+      "style": "Calculate the total wall area (ignore the door space) of a room that measures:"
     } ,
     {
       "id": 7,
@@ -59,10 +59,10 @@
     } ,
     {
       "id": 8,
-      "slug": "House Paint",
+      "slug": "Exterior Paint",
       "icon": "./assets/images/017-brush.png",
       "showcaseImage": "./assets/images/housepaint.jpg",
-      "name": "House Paint",
+      "name": "Exterior Paint",
       "style": "Calculate how much these materials would cost to buy with VAT added on:"
     } ,
     {
@@ -71,7 +71,7 @@
       "icon": "./assets/images/017-brush.png",
       "showcaseImage": "./assets/images/wallpaper.jpg",
       "name": "Wallpaper",
-      "style": "Calculate how many rolls of wall paper, and the cost of the rolls of paper: "
+      "style": "Calculate how many rolls of lining wall paper (No pattern match), and the cost of the rolls of paper: "
     } ,
     {
       "id": 10,

@@ -131,7 +131,8 @@ export class ElectricalDetailsPage implements OnInit {
     //Resistance
     this.pResist = "0.0000000172";
     this.lLength = Math.floor(Math.random() * 400) + 10;
-    this.csArea = Math.floor(Math.random() * 10) + 1;
+    this.csArea = Array(1,1.5,2.5,4,6,10,16);
+    this.csArea = this.csArea[Math.floor(Math.random() * this.csArea.length)];
 
     //Ohms
     this.vVolts = Math.floor(Math.random() * 200) + 10;

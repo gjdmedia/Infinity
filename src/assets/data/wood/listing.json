@@ -9,10 +9,10 @@
     },    
     {
       "id": 2,
-      "slug": "Perimiter",
+      "slug": "Perimeter",
        "icon": "./assets/images/032-wood plane.png",
       "image": "./assets/images/place.jpg",
-      "name": "Perimiter"
+      "name": "Perimeter"
     },
     {
       "id": 3,

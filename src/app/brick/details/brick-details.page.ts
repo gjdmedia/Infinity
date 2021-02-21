@@ -42,6 +42,8 @@ export class BrickDetailsPage implements OnInit {
   subtractDoorArea: any;
   brickWallArea: any;
   brickCoverage: any;
+  brickCoverage12: any;
+  brickCoverage40: any;
   totalBricks: any;
   bricksRequired: any;
   costPerBrick: any;
@@ -159,7 +161,7 @@ export class BrickDetailsPage implements OnInit {
   generateSides(): void {
 
     //Wall
-    this.side1 = Math.floor(Math.random() * 30) + 5;
+    this.side1 = Math.floor(Math.random() * 11) + 5;
     this.side2 = this.side1 / 2;
     console.trace('Random: ', this.side1);
     this.side1a = Math.floor(Math.random() * 30) + 5;
@@ -172,7 +174,8 @@ export class BrickDetailsPage implements OnInit {
 
     // Bricks
     this.brickWallArea = Math.floor(Math.random() * 150) + 100;
-    this.brickCoverage = Math.floor(Math.random() * 40) + 10;
+    this.brickCoverage12 = 12;
+    this.brickCoverage40 = 40;
 
     //Cost
     this.bricksRequired = Math.floor(Math.random() * 3500) + 1000;
@@ -187,7 +190,7 @@ export class BrickDetailsPage implements OnInit {
     //Wall Tiles
     this.noTiles = Math.floor(Math.random() * 350) + 100;
     this.tilesPerPack = Math.floor(Math.random() * 20) + 10;
-    this.pricePack = Math.floor(Math.random() * (25.99 * precision - 1.00 * precision) + 1 * precision) / (1 * precision);
+    this.pricePack = Math.floor(Math.random() * (29.99 * precision - 1.00 * precision) + 1 * precision) / (1 * precision);
 
     //Cement
     this.cement = Math.floor(Math.random() * 100) + 10;
@@ -197,7 +200,8 @@ export class BrickDetailsPage implements OnInit {
     this.totalMix = Math.floor(Math.random() * 150) + 10;
 
     //Raft
-    this.raftDepth = Math.floor(Math.random() * 300) + 100;;
+    this.raftDepth = Math.floor(Math.random()*7);
+    this.raftDepth = this.raftDepth * 30 + 100;
     this.raftHeight = Math.floor(Math.random() * 40) + 10;
     this.raftWidth = Math.round(this.raftHeight * 0.7);
 
@@ -330,9 +334,27 @@ export class BrickDetailsPage implements OnInit {
 
   }
 
-  calculateBricks(): void {
+  calculateBricks12(): void {
 
-    var wall = this.brickWallArea * this.brickCoverage;
+    var wall = this.brickWallArea * this.brickCoverage12;
+    wall = Math.round(wall * 10) / 10;
+
+    if (this.totalBricks == wall) {
+      console.trace('Correct!');
+
+      this.presentToastCorrect();
+
+
+    } else {
+
+      this.presentToastIncorrect();
+    }
+
+  }
+
+  calculateBricks40(): void {
+
+    var wall = this.brickWallArea * this.brickCoverage40;
     wall = Math.round(wall * 10) / 10;
 
     if (this.totalBricks == wall) {

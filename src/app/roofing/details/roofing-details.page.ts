@@ -158,7 +158,7 @@ export class RoofingDetailsPage implements OnInit {
 
     // Labour
     this.labourHours = Math.floor(Math.random() * 30) + 10;
-    this.labourCost = Math.floor(Math.random() * (25.99 * precision - 1.00 * precision) + 1 * precision) / (1 * precision);
+    this.labourCost = Math.floor(Math.random() * (17.99 * precision - 1.00 * precision) + 1 * precision) / (1 * precision);
 
     // Discount
     this.discount = Math.floor(Math.random() * 30) + 10;
@@ -166,11 +166,12 @@ export class RoofingDetailsPage implements OnInit {
 
     // Breakages
     this.numberTiles = Math.floor(Math.random() * 900) + 700;
-    this.breakage = Math.floor(Math.random() * 30) + 1;
+    this.breakage = Math.floor(Math.random() * 5) + 3;
 
     //Pallet & Cost
     this.numberPalletTiles = Math.floor(Math.random() * 3500) + 700;
-    this.numberPerPallet = Math.floor(Math.random() * 300) + 200;
+    this.numberPerPallet = Array(196,216,240);
+    this.numberPerPallet = this.numberPerPallet[Math.floor(Math.random() * this.numberPerPallet.length)];
     this.costPerTile = Math.floor(Math.random() * (0.99 * precision - 0.4 * precision) + 1 * precision) / (1 * precision);
     this.deliveryCharge = Math.floor(Math.random() * 70) + 20;
 
@@ -189,7 +190,8 @@ export class RoofingDetailsPage implements OnInit {
      //Tiles & Gutter
      this.roofWidth = Math.floor(Math.random() * 15) + 5;
      this.roofHeight = Math.round(this.span * 0.4 *10) / 10;
-     this.tilesPerSqM = Math.floor(Math.random() * 60) + 40;
+     this.tilesPerSqM = Array(10,18,60);
+     this.tilesPerSqM = this.tilesPerSqM[Math.floor(Math.random() * this.tilesPerSqM.length)];
 
 
   }

@@ -39,7 +39,7 @@
       "icon": "./assets/images/010-saw.png",
       "showcaseImage": "./assets/images/paint.jpg",
       "name": "Paint",
-      "style": "You have to paint a timber wall. A 5 litre tin will cover 22 square metres, how many tins are required to cover the following area?"
+      "style": "You have to paint a timber wall. A 5 litre tin will cover 8 square metres, how many tins are required to cover the following area?"
     },
     {
       "id": 5,
@@ -56,7 +56,7 @@
       "icon": "./assets/images/010-saw.png",
       "showcaseImage": "./assets/images/plasterboard.jpg",
       "name": "Plasterboard",
-      "style": "You have ordered some timber to be delivered, work out the total cost including VAT"
+      "style": "How many sheets would be needed to cover both sides of a timber partition wall measuring:"
     } ,
     {
       "id": 7,
@@ -64,7 +64,7 @@
       "icon": "./assets/images/010-saw.png",
       "showcaseImage": "./assets/images/discount.jpg",
       "name": "Discount",
-      "style": "You have ordered some timber to be delivered, work out the total cost including VAT"
+      "style": "You have negotiated a discount off the cost of materials with a local supplier."
     } ,
     {
       "id": 8,
@@ -72,7 +72,7 @@
       "icon": "./assets/images/010-saw.png",
       "showcaseImage": "./assets/images/joist.jpg",
       "name": "Joist",
-      "style": "You are repairing part of a timber joist which is rotten."
+      "style": "You are repairing part of a timber joint which is rotten."
     } ,
     {
       "id": 9,

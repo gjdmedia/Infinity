@@ -51,10 +51,10 @@
     },
     {
       "id": 8,
-      "slug": "House Paint",
+      "slug": "Exterior Paint",
       "icon": "./assets/images/017-brush.png",
       "image": "./assets/images/housepaint.jpg",
-      "name": "House Paint"
+      "name": "Exterior Paint"
     },
     {
       "id": 9,

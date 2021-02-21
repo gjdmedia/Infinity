@@ -346,13 +346,15 @@
                     <ion-item class="ion-padding">
                       <ion-label>Labour Cost : £</ion-label>
                       <p [innerHTML]="labourPerHour" type="number"></p>
+                      <p style="margin-left: 5px;">/ hour</p>
                     </ion-item>
                     <ion-item class="ion-padding">
-                      <ion-label>Length of the Job : £</ion-label>
+                      <ion-label>Length of the Job :</ion-label>
                       <p [innerHTML]="labourHours" type="number"></p>
+                      <p style="margin-left: 5px;">hours</p>
                     </ion-item>
                     <ion-item class="ion-padding">
-                      <ion-label>Total Cost :</ion-label>
+                      <ion-label>Total Cost : £</ion-label>
                       <ion-input name="totalCost" [(ngModel)]="totalLabourCost" maxlength="6"></ion-input>
                     </ion-item>
 
@@ -404,17 +406,17 @@
                     <ion-item class="ion-padding">
                       <ion-label>Side 1:</ion-label>
                       <p [innerHTML]="side1Tri" type="number"></p>
-                      <p style="margin-left: 5px;">cm</p>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Side 2:</ion-label>
                       <p [innerHTML]="side2Tri" type="number"></p>
-                      <p style="margin-left: 5px;">cm</p>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
                     <ion-item class="ion-padding">
                       <ion-label>Total:</ion-label>
                       <ion-input clear-input name="totalTri" [(ngModel)]="totalTri"></ion-input>
-                      <p style="margin-left: 5px;">cm2</p>
+                      <p style="margin-left: 5px;">m2</p>
                     </ion-item>
                   </ion-list>
                   <div class="ion-padding">
@@ -435,8 +437,6 @@
 
     <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Wall Area'">
       <ion-row class="slide-inner-row">
-        <h4 class="ion-padding">Intro</h4>
-
         <ion-card>
           <img src="/assets/images/wall_area.png" />
           <ion-card-header>
@@ -572,7 +572,7 @@
 
     <!-- House Time Calculations -->
 
-    <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='House Paint'">
+    <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Exterior Paint'">
       <ion-row class="slide-inner-row">
         <ion-card>
           <!-- <img src="/assets/images/wall_area.png" /> -->

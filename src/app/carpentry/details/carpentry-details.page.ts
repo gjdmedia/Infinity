@@ -58,6 +58,7 @@ export class CarpentryDetailsPage implements OnInit {
   totalPlasterArea: any;
   totalPlasterAreaDoubled: any;
   plasterCoverage: any;
+  side1Plast:any;
   numberOfBoards: any;
   timberCost: any;
   screwsCost: any;
@@ -152,6 +153,7 @@ export class CarpentryDetailsPage implements OnInit {
     this.costDelivery = Math.floor(Math.random() * 20) + 5; 
 
     this.plasterCoverage = 2.88;
+    this.side1Plast = 2.8;
 
     this.timberCost = Math.floor(Math.random() * 400) + 100; 
     this.screwsCost = Math.floor(Math.random() * 100) + 10; 
@@ -163,7 +165,7 @@ export class CarpentryDetailsPage implements OnInit {
     this.denominator = Math.floor(Math.random() * 8) + 4; 
     this.rotAmount = this.numerator + " / " + this.denominator;
 
-    this.radius = Math.floor(Math.random() * 300) + 10; 
+    this.radius = Math.floor(Math.random() * 150) + 50; 
 
 
 
@@ -353,7 +355,7 @@ export class CarpentryDetailsPage implements OnInit {
 
   calculateSimplePaint():void {
 
-    var tinsRequired = Math.round((this.totalArea / 22) * 10) / 10;
+    var tinsRequired = Math.round((this.totalArea / 8) * 10) / 10;
     console.trace(tinsRequired)
 
     if (this.totalArea == this.side1*this.side2 && tinsRequired == this.totalTins)  {
@@ -389,10 +391,10 @@ export class CarpentryDetailsPage implements OnInit {
 
       calculatePlasteboard():void {
 
-        var requiredBoards = Math.round((this.totalPlasterAreaDoubled / 2.88) * 10) / 10;
+        var requiredBoards = Math.ceil(((this.side1 * 2.8) * 2 )/ 2.88);
 
 
-        if (this.totalPlasterAreaDoubled  == (this.side2*this.side1)*2 && this.numberOfBoards == requiredBoards )  {
+        if (this.numberOfBoards == requiredBoards )  {
           console.trace('Correct!');
       
            this.presentToastCorrect();
@@ -401,6 +403,9 @@ export class CarpentryDetailsPage implements OnInit {
           } else {
       
             this.presentToastIncorrect();
+            console.trace("Required boards: " + requiredBoards + " Number boards: " + this.numberOfBoards);
+            this.generateSides();
+
           }
           
         }
@@ -411,10 +416,10 @@ export class CarpentryDetailsPage implements OnInit {
           var subTotal = this.timberCost+this.plugsCost+this.screwsCost;
           var discAmount = subTotal * (this.discount / 100);
           discAmount = Math.ceil(discAmount * 100) / 100;
+          var discTotal = Math.round((subTotal - discAmount) * 10) / 10;
+          console.trace("Subtotal = " + subTotal + "Discount = " + discAmount + " Answer : " + discTotal)
 
-          console.trace("Subtotal = " + subTotal + "Discount = " + discAmount + " Answer : " + (subTotal - discAmount))
-
-          if (this.totalCost == subTotal - discAmount)  {
+          if (this.totalCost == discTotal)  {
             console.trace('Correct!');
         
              this.presentToastCorrect();
@@ -423,6 +428,8 @@ export class CarpentryDetailsPage implements OnInit {
             } else {
         
               this.presentToastIncorrect();
+              this.generateSides();
+
             }
             
           }

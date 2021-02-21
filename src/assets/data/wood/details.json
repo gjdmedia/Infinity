@@ -6,15 +6,15 @@
       "icon": "./assets/images/032-wood plane.png",
       "showcaseImage": "./assets/images/area.jpg",
       "name": "Area",
-      "style": "Calculate the area of the room:"
+      "style": "Calculate the area of the floor:"
     },
     {
       "id": 2,
-      "slug": "Perimiter",
+      "slug": "Perimeter",
       "icon": "./assets/images/032-wood plane.png",
       "showcaseImage": "./assets/images/place.jpg",
-      "name": "Perimiter",
-      "style": "Calculate the perimiter of the room:"
+      "name": "Perimeter",
+      "style": "Calculate the perimeter of the room:"
     },
     {
       "id": 3,

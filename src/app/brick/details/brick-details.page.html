@@ -176,7 +176,9 @@
 
     <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Bricks'">
       <ion-row class="slide-inner-row">
+       
         <ion-card>
+          <h4 class="ion-padding">Intro</h4>
           <!-- <img src="/assets/images/force.png" /> -->
           <ion-card-header>
             <ion-card-title>
@@ -205,9 +207,9 @@
 
                     </ion-item>
                     <ion-item class="ion-padding">
-                      <ion-label>Bricks / m2 :</ion-label>
-                      <p [innerHTML]="brickCoverage" type="number"></p>
-                      <p style="margin-left: 5px;">bricks</p>
+                      <ion-label>Bricks :</ion-label>
+                      <p [innerHTML]="brickCoverage12" type="number"></p>
+                      <p style="margin-left: 5px;">bricks / m2</p>
                     </ion-item>
 
                     <ion-item class="ion-padding">
@@ -217,7 +219,63 @@
                     </ion-item>
                   </ion-list>
                   <div class="ion-padding">
-                    <ion-button color="secondary" expand="block" type="submit" (click)="calculateBricks()">
+                    <ion-button color="secondary" expand="block" type="submit" (click)="calculateBricks12()">
+                      Submit
+                    </ion-button>
+                  </div>
+                </form>
+              </ion-row>
+            </ion-slide>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </ion-slide>
+    <ion-slide class="last-slide illustration-and-decoration-slide" *ngIf="details?.name =='Bricks'">
+      <ion-row class="slide-inner-row">
+        
+        <ion-card>
+          <h4 class="ion-padding">Stretch</h4>
+          <!-- <img src="/assets/images/force.png" /> -->
+          <ion-card-header>
+            <ion-card-title>
+              <app-text-shell [data]="details?.name"></app-text-shell>
+            </ion-card-title>
+            <ion-card-subtitle>
+              <app-text-shell [data]="details?.style"></app-text-shell>
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-slide class="first-slide illustration-and-decoration-slide">
+              <ion-row class="slide-inner-row">
+                <!-- <h4 class="ion-padding">Intro</h4> -->
+                <!--  <ion-row class="description-row">
+              <img
+                src="/assets/images/simple_rectangle.png"
+                class="ion-padding"
+              />
+            </ion-row> -->
+                <form>
+                  <ion-list class="ion-padding">
+                    <ion-item class="ion-padding">
+                      <ion-label>Wall Area :</ion-label>
+                      <p [innerHTML]="brickWallArea" type="number"></p>
+                      <p style="margin-left: 5px;">m2</p>
+
+                    </ion-item>
+                    <ion-item class="ion-padding">
+                      <ion-label>Bricks :</ion-label>
+                      <p [innerHTML]="brickCoverage40" type="number"></p>
+                      <p style="margin-left: 5px;">bricks / m2</p>
+                    </ion-item>
+
+                    <ion-item class="ion-padding">
+                      <ion-label>Total Bricks :</ion-label>
+                      <ion-input clear-input name="totalBricks" [(ngModel)]="totalBricks"></ion-input>
+
+                    </ion-item>
+                  </ion-list>
+                  <div class="ion-padding">
+                    <ion-button color="secondary" expand="block" type="submit" (click)="calculateBricks40()">
                       Submit
                     </ion-button>
                   </div>
@@ -233,10 +291,10 @@
 
     <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Cost'">
       <ion-row class="slide-inner-row">
-        <h4 class="ion-padding">Intro</h4>
+        <!-- <h4 class="ion-padding">Intro</h4> -->
 
         <ion-card>
-          <img src="/assets/images/simple_rectangle_area.png" />
+          <!-- <img src="/assets/images/simple_rectangle_area.png" /> -->
           <ion-card-header>
             <ion-card-title>
               <app-text-shell [data]="details?.name"></app-text-shell>
@@ -313,7 +371,7 @@
                 <form>
                   <ion-list class="ion-padding">
                     <ion-item class="ion-padding">
-                      <ion-label>Height:</ion-label>
+                      <ion-label>Rafter length:</ion-label>
                       <p [innerHTML]="side1Tri" type="number"></p>
                       <p style="margin-left: 5px;">m</p>
                     </ion-item>
@@ -345,7 +403,7 @@
 
     <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Insulation'">
       <ion-row class="slide-inner-row">
-        <h4 class="ion-padding">Intro</h4>
+        <!-- <h4 class="ion-padding">Intro</h4> -->
 
         <ion-card>
           <img src="/assets/images/wall_area.png" />
@@ -465,7 +523,7 @@
                       <ion-input clear-input name="numberPacks" [(ngModel)]="numberPacks"></ion-input>
                     </ion-item>
                     <ion-item class="ion-padding">
-                      <ion-label>Total Cost (inc VAT):</ion-label>
+                      <ion-label>Total Cost:</ion-label>
                       <ion-input clear-input name="totalCostTiles" [(ngModel)]="totalCostTiles"></ion-input>
                     </ion-item>
                   </ion-list>
@@ -554,9 +612,10 @@
 
     <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Cement'">
       <ion-row class="slide-inner-row">
-        <h4 class="ion-padding">Sand</h4>
+        
 
         <ion-card>
+          <h4 class="ion-padding">Sand</h4>
           <!-- <img src="/assets/images/simple_rectangle_area.png" /> -->
           <ion-card-header>
             <ion-card-subtitle>
@@ -599,9 +658,10 @@
     </ion-slide>
     <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Cement'">
       <ion-row class="slide-inner-row">
-        <h4 class="ion-padding">Cement</h4>
+       
 
         <ion-card>
+          <h4 class="ion-padding">Cement</h4>
           <!-- <img src="/assets/images/simple_rectangle_area.png" /> -->
           <ion-card-header>
             <ion-card-subtitle>
@@ -644,9 +704,10 @@
     </ion-slide>
     <ion-slide class="first-slide illustration-and-decoration-slide" *ngIf="details?.name =='Cement'">
       <ion-row class="slide-inner-row">
-        <h4 class="ion-padding">Sand & Cement</h4>
+       
 
         <ion-card>
+          <h4 class="ion-padding">Sand & Cement</h4>
           <!-- <img src="/assets/images/simple_rectangle_area.png" /> -->
           <ion-card-header>
             <ion-card-subtitle>
@@ -738,7 +799,7 @@
                     <ion-item class="ion-padding">
                       <ion-label>Converted Depth :</ion-label>
                       <ion-input clear-input name="convertedDepth" [(ngModel)]="convertedDepth"></ion-input>
-                      <p style="margin-left: 5px;">mm</p>
+                      <p style="margin-left: 5px;">m</p>
                     </ion-item>
 
                     <ion-item class="ion-padding">
