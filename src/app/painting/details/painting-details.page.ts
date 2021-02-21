@@ -172,7 +172,9 @@ export class PaintingDetailsPage implements OnInit {
     this.rollersCost = Math.floor(Math.random() * 20) + 1; 
     this.caulkCost = Math.floor(Math.random() * 15) + 2; 
     this.dropCost = Math.floor(Math.random() * 100) + 10; 
-    this.discount = Math.floor(Math.random() * 20) + 5; 
+  
+    this.discount = Array(5,10,15,20,25,30,35,40,45,50);
+    this.discount = this.discount[Math.floor(Math.random() * this.discount.length)];
 
     //Labour
     this.labourPerHour = Math.floor(Math.random() * 30) + 10; 
@@ -374,7 +376,7 @@ export class PaintingDetailsPage implements OnInit {
 
           calculateTins():void{
 
-            var volumeRounded = Math.round(this.coverage / this.tinsCoverage * 10) / 10 ;
+            var volumeRounded = Math.ceil(this.coverage / this.tinsCoverage);
             console.trace(volumeRounded);
             if (this.tinsNeeded == volumeRounded)  {
               console.trace('Correct!');

@@ -30,7 +30,7 @@
       "icon": "./assets/images/017-brush.png",
       "showcaseImage": "./assets/images/triangle.jpg",
       "name": "Triangle",
-      "style": "Calculate the area of this area under stairs"
+      "style": "Calculate this area under stairs"
     },
     {
       "id": 5,
@@ -63,7 +63,7 @@
       "icon": "./assets/images/017-brush.png",
       "showcaseImage": "./assets/images/housepaint.jpg",
       "name": "Exterior Paint",
-      "style": "Calculate how much these materials would cost to buy with VAT added on:"
+      "style": "Calculate how long it will take you to paint a house (to the nearest hour) with these dimensions:"
     } ,
     {
       "id": 9,

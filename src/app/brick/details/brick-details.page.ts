@@ -211,7 +211,8 @@ export class BrickDetailsPage implements OnInit {
     this.rollersCost = Math.floor(Math.random() * 20) + 1;
     this.caulkCost = Math.floor(Math.random() * 15) + 2;
     this.dropCost = Math.floor(Math.random() * 100) + 10;
-    this.discount = Math.floor(Math.random() * 20) + 5;
+    this.discount = Array(5,10,15,20,25,30,35,40,45,50);
+    this.discount = this.discount[Math.floor(Math.random() * this.discount.length)];
 
     // Build
     this.brickArea = Math.floor(Math.random() * 150) + 50;
